@@ -1,0 +1,417 @@
+/* styles.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 30px; /* Adjust based on your header height */
+}
+
+/* Header Styles */
+.header {
+    transition: all 0.3s ease;
+    height: 60px; /* Set your desired header height */
+}
+
+.logo {
+height: 35px;
+width: auto;
+transition: transform 0.3s ease;
+object-fit: contain;
+vertical-align: middle;
+}
+
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.nav-link {
+    position: relative;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:not(.btn)::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0066cc;
+    transition: width 0.3s ease;
+}
+
+.nav-link:not(.btn):hover::after {
+    width: 100%;
+}
+
+.nav-link.btn {
+    transition: all 0.3s ease;
+}
+
+.nav-link.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Section */
+.title-section {
+    padding: 6rem 0 2rem; /* Reduced padding from 6rem */
+    min-height: calc(100vh - 50px); /* Ensures it takes up available viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .title-section {
+  padding: 6rem 0; /* Reduced from 6rem to 3rem */
+  background-color: #f8f9fa;
+}
+  .title-section h1 {
+    margin-bottom: 0rem; /* Reduced from 1.5rem */
+  }
+
+.title-section .btn {
+transition: all 0.3s ease;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+padding: 0.5rem 1.5rem;
+}
+
+
+.title-section .btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-height: 700px) {
+    .title-section {
+      padding: 1.5rem 0;
+    }
+    
+    .model-viewer-container {
+      height: 250px;
+    }
+    
+    .title-section h1 {
+      font-size: 2rem;
+    }
+    
+    .title-section .lead {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+/* 3D Model Viewer */
+.model-viewer-container {
+    width: 100%;
+    height: 400px;
+    margin: 0 auto 2rem;
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+  }
+ 
+  model-viewer {
+    width: 100%;
+    height: 100%;
+    background-color: #f8f9fa;
+    --poster-color: #f8f9fa;
+    border-radius: 0.75rem;
+  }
+  .model-viewer-container {
+    background-image: url('assets/images/office-background.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .progress-bar {
+    display: block;
+    width: 33%;
+    height: 10%;
+    max-height: 2px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    border-radius: 25px;
+    box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .progress-bar.hide {
+    visibility: hidden;
+    transition: visibility 0.3s;
+  }
+  
+  .update-bar {
+    background-color: rgba(0, 102, 204, 0.9);
+    width: 0%;
+    height: 100%;
+    border-radius: 25px;
+    float: left;
+    transition: width 0.3s;
+  }
+
+  .model-viewer-container {
+    position: relative;
+  }
+  
+  .model-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/images/office-background.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+  }
+  
+  model-viewer {
+    --poster-color: transparent;
+    background-color: transparent;
+  }
+  
+  @media (max-width: 768px) {
+    .model-viewer-container {
+      height: 300px;
+    }
+  }
+  
+
+/* Project Abstract Section - Updated */
+#project-abstract .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  
+  #project-abstract .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  #project-abstract h2:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #0066cc;
+    margin: 15px auto 0;
+  }
+  
+  #project-abstract strong {
+    color: #0066cc;
+  }
+  
+  #project-abstract img {
+    max-height: 300px;
+    object-fit: cover;
+  }
+  
+
+
+/* Key Features Section */
+.feature-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.feature-icon {
+color: #0066cc;
+}
+
+
+/* Card Styles */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.rounded-4 {
+    border-radius: 0.75rem !important;
+}
+
+.rounded-5 {
+    border-radius: 1rem !important;
+}
+
+
+/* Team Member Flip Effect */
+.team-card {
+    perspective: 1000px;
+    height: 350px;
+    margin-bottom: 20px;
+  }
+  
+  .team-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+  
+  .team-card:hover .team-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .team-front, .team-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    background-color: #f8f9fa;
+  }
+  
+  .team-front {
+    color: #212529;
+  }
+  
+  .team-back {
+    background-color: #0066cc;
+    color: white;
+    transform: rotateY(180deg);
+  }
+  
+  .team-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .social-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .social-icon:hover {
+    background-color: white;
+    color: #0066cc;
+    transform: translateY(-3px);
+  }
+  
+
+/* Partner Section */
+.partner-card {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.partner-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.partner-img {
+    max-height: 80px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.partner-card:hover .partner-img {
+    transform: scale(1.1);
+}
+
+/* Footer */
+.github-link {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #212529;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.github-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #f8f9fa;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh;
+    }
+    
+    .team-img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Nav item spacing for larger screens */
+@media (min-width: 992px) {
+  .navbar-nav .nav-item {
+    white-space: nowrap;
+  }
+  
+  .navbar-nav .nav-link {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    font-size: 0.9rem;
+  }
+  
+  /* More space for the Get Started button */
+  .navbar-nav .nav-item:last-child {
+    margin-left: 0.5rem;
+  }
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  

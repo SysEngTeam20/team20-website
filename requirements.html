@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portalt - Requirements</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+    <header class="header bg-white shadow-sm py-3 fixed-top">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md-3">
+                    <div class="d-flex align-items-center">
+                        <img src="assets/images/Portalt-Logo.png" alt="Portalt Logo" class="logo me-3">
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="requirements.html">Requirements</a></li>
+                                <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+                                <li class="nav-item"><a class="nav-link" href="algorithms.html">Algorithms</a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-design.html">UI Design</a></li>
+                                <li class="nav-item"><a class="nav-link" href="system-design.html">System Design</a></li>
+                                <li class="nav-item"><a class="nav-link" href="implementation.html">Implementation</a></li>
+                                <li class="nav-item"><a class="nav-link" href="testing.html">Testing</a></li>
+                                <li class="nav-item"><a class="nav-link" href="evaluation.html">Evaluation</a></li>
+                                <li class="nav-item"><a class="nav-link" href="appendices.html">Appendices</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+
+    <!-- Page Title -->
+    <section class="page-title py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 fw-bold">Project Requirements</h1>
+                    <p class="lead">Detailed analysis and documentation of the Portalt project requirements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Introduction and Project Background -->
+    <section id="background" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
+                        <div class="card-body">
+                            <h2 class="mb-4">Partner Introduction and Project Background</h2>
+                            <p>Our project is a collaboration with IBM and NHS to develop a white-labeled VR/AR platform designed to revolutionize touring experiences. The project emerged from the need to create more accessible and engaging virtual tours for various industries, particularly for innovation center spaces.</p>
+                            <p>IBM provided technical expertise and infrastructure support, while NHS offered insights into healthcare applications and accessibility requirements. UCL Computer Science department served as the academic partner, providing research guidance and educational use case perspectives.</p>
+                            <p>The background of this project stems from the increasing demand for virtual experiences accelerated by global events that limited physical access to spaces. Organizations across various sectors expressed the need for customizable, interactive virtual tour solutions that could be adapted to their specific requirements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Goals -->
+    <section id="goals" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
+                        <div class="card-body">
+                            <h2 class="mb-4">Project Goals</h2>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item border-0 ps-0">
+                                    <i class="fas fa-check-circle text-primary me-2"></i>
+                                    Create a white-labeled VR/AR visiting & activity system for innovation center spaces
+                                </li>
+                                <li class="list-group-item border-0 ps-0">
+                                    <i class="fas fa-check-circle text-primary me-2"></i>
+                                    Develop an intuitive interface that allows non-technical users to create and customize virtual tours
+                                </li>
+                                <li class="list-group-item border-0 ps-0">
+                                    <i class="fas fa-check-circle text-primary me-2"></i>
+                                    Build a two-sided system with an admin dashboard for customization and an end VR/AR experience
+                                </li>
+                                <li class="list-group-item border-0 ps-0">
+                                    <i class="fas fa-check-circle text-primary me-2"></i>
+                                    Support multiple devices and platforms for maximum reach
+                                </li>
+                                <li class="list-group-item border-0 ps-0">
+                                    <i class="fas fa-check-circle text-primary me-2"></i>
+                                    Provide interactive elements that enhance engagement and information retention
+                                </li>
+                                <li class="list-group-item border-0 ps-0">
+                                    <i class="fas fa-check-circle text-primary me-2"></i>
+                                    Create a scalable solution that can grow with user needs and technological advancements
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirement Gathering -->
+    <section id="gathering" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
+                        <div class="card-body">
+                            <h2 class="mb-4">Requirement Gathering</h2>
+                            
+                            <h4 class="mt-4 mb-3">How we collected requirements</h4>
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 bg-light rounded-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><i class="fas fa-users text-primary me-2"></i>Stakeholder Interviews</h5>
+                                            <p class="card-text">We conducted in-depth interviews with representatives from IBM, NHS, and potential end-users to understand their needs and expectations.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 bg-light rounded-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><i class="fas fa-clipboard-list text-primary me-2"></i>Market Research</h5>
+                                            <p class="card-text">We analyzed existing VR/AR tour solutions to identify gaps and opportunities for innovation.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 bg-light rounded-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><i class="fas fa-poll text-primary me-2"></i>User Surveys</h5>
+                                            <p class="card-text">We designed and distributed surveys to potential users across different sectors to gather quantitative data on preferences and requirements.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 bg-light rounded-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><i class="fas fa-comments text-primary me-2"></i>Heuristic Evaluation</h5>
+                                            <p class="card-text">We chose to carry out heuristics evaluation as it is quick to complete in our limited time frame.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h4 class="mt-5 mb-3">Survey Design and Analysis</h4>
+                            <p>We designed a comprehensive survey using a mixed-methods approach, combining Likert scale questions, multiple-choice options, and open-ended questions. The survey was distributed to potential users across healthcare, education, real estate, and tourism sectors.</p>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <h5>Survey Analysis Methods:</h5>
+                                    <ul>
+                                        <li>Quantitative analysis using statistical methods</li>
+                                        <li>Thematic analysis for qualitative responses</li>
+                                        <li>Cross-tabulation to identify sector-specific needs</li>
+                                        <li>Priority mapping to identify critical features</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Key Insights:</h5>
+                                    <ul>
+                                        <li>Users valued customization options</li>
+                                        <li>Many prioritized ease of use over advanced features</li>
+                                        <li>Cross-platform compatibility was highly desired</li>
+                                        <li>Healthcare users emphasized accessibility features</li>
+                                        <li>Education sector prioritized interactive elements</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-5">
+                                <h5>Heuristic Evaluation Results</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Heuristic</th>
+                                                <th>Problem</th>
+                                                <th>Solution</th>
+                                                <th>Severity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Help and documentation</td>
+                                                <td>On the admin's scene editor, it is not obvious how to build activity in terms of scene building and organizing. Especially for placing artifacts onto the scene.</td>
+                                                <td>Add hoverable information pastels, as well as a link to a pre-recorded video tutorial.</td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aesthetic and minimalist design</td>
+                                                <td>In the user VR view, the "click for details" button on artifacts could take too much space and could look more professional. Also, the overlay card might end up taking up too much space and obstruct the user's view.</td>
+                                                <td>Replace the "click for details" by a "i" round button. Make information cards semi-transparent for the use to still have a sense of the environment and potentially approaching participants.</td>
+                                                <td>2</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personas -->
+    <section id="personas" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
+                        <div class="card-body">
+                            <h2 class="mb-4">Personas</h2>
+                            <p class="mb-4">Based on our research, we identified the following typical users of our platform:</p>
+                            
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 shadow-sm rounded-4">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="bg-primary rounded-circle text-white d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                                                    <i class="fas fa-user-tie fa-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="mb-0">Admin User</h4>
+                                                    <p class="text-muted mb-0">Tech-Savvy Professional</p>
+                                                </div>
+                                            </div>
+                                            <p><strong>Goals:</strong> Create and customize virtual tours for their organization or clients. Manage content and user access.</p>
+                                            <p><strong>Challenges:</strong> Needs an intuitive interface to efficiently create professional-looking tours without extensive technical knowledge.</p>
+                                            <p><strong>Preferences:</strong> Values customization options, ease of use, and the ability to update content regularly.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 shadow-sm rounded-4">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="bg-primary rounded-circle text-white d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                                                    <i class="fas fa-user fa-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 class="mb-0">End User</h4>
+                                                    <p class="text-muted mb-0">VR/AR Experience Visitor</p>
+                                                </div>
+                                            </div>
+                                            <p><strong>Goals:</strong> Experience virtual tours with engaging, interactive content. Easily navigate and access information.</p>
+                                            <p><strong>Challenges:</strong> May have varying levels of technical expertise and comfort with VR/AR technology.</p>
+                                            <p><strong>Preferences:</strong> Prioritizes intuitive navigation, clear information presentation, and immersive experiences.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-5">
+                                <h4>Persona Sketches from HCI Coursework</h4>
+                                <p>Please refer to our detailed persona sketches in the HCI coursework for more information.</p>
+                                <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 300px;">
+                                    <p class="text-muted">Space for persona sketches from HCI coursework</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section id="use-cases" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
+                        <div class="card-body">
+                            <h2 class="mb-4">Use Cases</h2>
+                            
+                            <h4 class="mb-4">Use Case Diagram</h4>
+                            <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 400px;">
+                                <p class="text-muted">Space for use case diagram</p>
+                            </div>
+                            
+                            <h4 class="mt-5 mb-4">List of Use Cases</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Use Case</th>
+                                            <th>Actor</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>UC1</td>
+                                            <td>Create Virtual Tour</td>
+                                            <td>Admin</td>
+                                            <td>Admin creates a new virtual tour by selecting an environment and configuring basic settings.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>UC2</td>
+                                            <td>Add Interactive Elements</td>
+                                            <td>Admin</td>
+                                            <td>Admin adds hotspots, information cards, and other interactive elements to the tour.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>UC3</td>
+                                            <td>Customize Tour Settings</td>
+                                            <td>Admin</td>
+                                            <td>Admin adjusts tour settings including navigation options, accessibility features, and branding.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>UC4</td>
+                                            <td>Experience Virtual Tour</td>
+                                            <td>End User</td>
+                                            <td>User navigates through the virtual environment and interacts with elements.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>UC5</td>
+                                            <td>Access Information</td>
+                                            <td>End User</td>
+                                            <td>User views information cards and details about specific elements in the tour.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>UC6</td>
+                                            <td>Share Tour</td>
+                                            <td>Admin/End User</td>
+                                            <td>Users share the virtual tour with others via link or embed code.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>UC6</td>
+                                            <td>Share Tour</td>
+                                            <td>Admin/End User</td>
+                                            <td>Users share the virtual tour with others via link or embed code.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>UC7</td>
+                                            <td>Manage Content</td>
+                                            <td>Admin</td>
+                                            <td>Admin updates, modifies, or removes content from existing tours.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>UC8</td>
+                                            <td>Configure Accessibility Options</td>
+                                            <td>Admin/End User</td>
+                                            <td>Users adjust accessibility settings to accommodate different needs.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MoSCoW Requirements -->
+    <section id="moscow" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
+                        <div class="card-body">
+                            <h2 class="mb-4">MoSCoW Requirements</h2>
+                            
+                            <h4 class="mb-4">Functional Requirements</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th width="15%">Priority</th>
+                                            <th width="15%">ID</th>
+                                            <th>Requirement</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Must Have -->
+                                        <tr>
+                                            <td rowspan="5" class="align-middle bg-danger text-white">Must Have</td>
+                                            <td>F1</td>
+                                            <td>The system must allow administrators to create virtual tours by selecting environments.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F2</td>
+                                            <td>The system must allow administrators to add and position 3D objects within the virtual environment.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F3</td>
+                                            <td>The system must provide an interface for end users to navigate through virtual tours.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F4</td>
+                                            <td>The system must allow end users to view information about objects in the tour.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F5</td>
+                                            <td>The system must support both VR and AR viewing modes.</td>
+                                        </tr>
+                                        
+                                        <!-- Should Have -->
+                                        <tr>
+                                            <td rowspan="4" class="align-middle bg-warning text-dark">Should Have</td>
+                                            <td>F6</td>
+                                            <td>The system should allow administrators to customize branding elements of the tour.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F7</td>
+                                            <td>The system should provide analytics on user engagement with tours.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F8</td>
+                                            <td>The system should allow administrators to import custom 3D models.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F9</td>
+                                            <td>The system should provide templates for common tour scenarios.</td>
+                                        </tr>
+                                        
+                                        <!-- Could Have -->
+                                        <tr>
+                                            <td rowspan="3" class="align-middle bg-success text-white">Could Have</td>
+                                            <td>F10</td>
+                                            <td>The system could allow for multi-user experiences within the same virtual tour.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F11</td>
+                                            <td>The system could provide voice narration capabilities for tours.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F12</td>
+                                            <td>The system could include gamification elements like quizzes or challenges.</td>
+                                        </tr>
+                                        
+                                        <!-- Won't Have -->
+                                        <tr>
+                                            <td rowspan="2" class="align-middle bg-secondary text-white">Won't Have</td>
+                                            <td>F13</td>
+                                            <td>The system won't have built-in 3D modeling capabilities.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>F14</td>
+                                            <td>The system won't have real-time collaborative editing features in the initial release.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <h4 class="mt-5 mb-4">Non-Functional Requirements</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th width="15%">Priority</th>
+                                            <th width="15%">ID</th>
+                                            <th width="20%">Category</th>
+                                            <th>Requirement</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Must Have -->
+                                        <tr>
+                                            <td rowspan="5" class="align-middle bg-danger text-white">Must Have</td>
+                                            <td>NF1</td>
+                                            <td>Usability</td>
+                                            <td>The system must have an intuitive interface that requires minimal training for both administrators and end users.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NF2</td>
+                                            <td>Performance</td>
+                                            <td>The system must maintain a minimum of 60 FPS in VR mode to prevent motion sickness.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NF3</td>
+                                            <td>Compatibility</td>
+                                            <td>The system must be compatible with major VR headsets (Oculus, HTC Vive) and AR-capable mobile devices.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NF4</td>
+                                            <td>Accessibility</td>
+                                            <td>The system must include basic accessibility features like text-to-speech and high-contrast options.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NF5</td>
+                                            <td>Security</td>
+                                            <td>The system must secure user data and provide authentication for administrative access.</td>
+                                        </tr>
+                                        
+                                        <!-- Should Have -->
+                                        <tr>
+                                            <td rowspan="3" class="align-middle bg-warning text-dark">Should Have</td>
+                                            <td>NF6</td>
+                                            <td>Scalability</td>
+                                            <td>The system should support at least 100 concurrent users per tour without performance degradation.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NF7</td>
+                                            <td>Reliability</td>
+                                            <td>The system should have an uptime of at least 99.5%.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NF8</td>
+                                            <td>Maintainability</td>
+                                            <td>The system should be built with a modular architecture to facilitate updates and extensions.</td>
+                                        </tr>
+                                        
+                                        <!-- Could Have -->
+                                        <tr>
+                                            <td rowspan="2" class="align-middle bg-success text-white">Could Have</td>
+                                            <td>NF9</td>
+                                            <td>Localization</td>
+                                            <td>The system could support multiple languages through localization.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NF10</td>
+                                            <td>Extensibility</td>
+                                            <td>The system could provide an API for third-party integrations.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                    <h5>Portalt</h5>
+                    <p class="small">A revolutionary VR/AR platform for creating interactive, customizable virtual tours.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">© 2025 Team 20. All rights reserved.</p>
+                    <a href="https://github.com/your-repo" class="github-link mt-2" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
