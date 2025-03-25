@@ -20,7 +20,7 @@ vertical-align: middle;
 
 
 .logo:hover {
-    transform: scale(1.1);
+    transform: none; /* Removes the scale effect */
 }
 
 .nav-link {
@@ -414,4 +414,71 @@ html {
     align-items: center;
   }
 
+/* Mobile navigation dropdown improvements */
+@media (max-width: 991.98px) {
+  /* Add background to expanded dropdown */
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background-color: white;
+    padding: 15px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1030; /* Ensure it appears above content */
+  }
   
+  /* Add spacing between nav items */
+  .navbar-nav .nav-item {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .navbar-nav .nav-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Make links more visible */
+  .navbar-nav .nav-link {
+    color: #333 !important;
+    font-weight: 500;
+    padding: 8px 15px;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+  }
+}
+
+/* Mobile navbar toggle button improvements */
+@media (max-width: 991.98px) {
+  /* Ensure the navbar container is properly positioned */
+  .navbar {
+    position: static;
+  }
+
+  /* Position the toggle button properly */
+  .navbar-toggler {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1040; /* Higher than the dropdown */
+    background-color: white;
+    padding: 0rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Adjust the position of the collapse menu */
+  .navbar-collapse {
+    position: fixed;
+    top: 60px; /* Match your header height */
+    right: 0;
+    left: 0;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+  }
+}
+
