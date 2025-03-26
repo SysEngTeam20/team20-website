@@ -66,11 +66,21 @@
                             <h2 class="mb-4">System Architecture</h2>
                             
                             <div class="mb-4">
-                                <p class="lead">Portalt's architecture is designed as a modern, scalable system that seamlessly integrates virtual reality experiences with advanced AI capabilities. The platform is structured into four main layers: Frontend, Authentication, Storage, and Compute. This layered architecture ensures clear separation of concerns while enabling robust communication between components. The Frontend Layer provides intuitive interfaces for both administrators and end-users, the Authentication Layer ensures secure access control, the Storage Layer manages both local and cloud-based data, and the Compute Layer powers real-time interactions and AI services. Each layer is built with scalability, maintainability, and extensibility in mind, utilizing industry-standard design patterns and best practices.</p>
+                                <p class="fs-5 mb-4">Portalt's architecture implements a layered, service-oriented design that integrates virtual reality experiences with AI capabilities. The system architecture consists of four primary layers that handle distinct responsibilities while maintaining clear interfaces for inter-layer communication:</p>
+                                
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• <strong>Frontend Layer:</strong> The user interface components that different types of users interact with</li>
+                                    <li>• <strong>Authentication Layer:</strong> Handles user identity and access control</li>
+                                    <li>• <strong>Storage Layer:</strong> Manages data persistence and file storage</li>
+                                    <li>• <strong>Compute Layer:</strong> Powers real-time interactions and AI processing</li>
+                                </ul>
+                                
+                                <p>This architecture enforces separation of concerns while facilitating efficient inter-layer communication through well-defined interfaces and protocols. Each layer operates independently while providing essential services to adjacent layers through standardized APIs.</p>
                             </div>
                             
                             <div class="mb-5">
                                 <img src="assets/images/graphs-n-schemas/system-architecture.png" alt="System Architecture Diagram" class="img-fluid rounded-4 mb-4" style="max-height: 600px; width: auto; display: block; margin: 0 auto;">
+                                <p class="text-muted text-center mb-4">The system architecture diagram shows how different components interact across layers</p>
                             </div>
                             
                             <h3 class="h4 mb-4">Component Description</h3>
@@ -438,107 +448,106 @@
                     <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
                         <div class="card-body">
                             <h2 class="mb-4">Design Patterns</h2>
-
+                            
                             <!-- Ubiq-Genie Patterns -->
                             <div class="mb-5">
                                 <h3 class="h4 mb-4">Ubiq-Genie Patterns</h3>
+                                <p class="mb-4">The Ubiq-Genie framework implements several design patterns to create a flexible and maintainable system. Design patterns are proven solutions to common software design problems, helping us write more organized and scalable code. Let's explore each pattern and understand how it contributes to our system:</p>
 
                                 <div class="pattern-section mb-4">
                                     <h4 class="h5 mb-3">1. Observer Pattern</h4>
-                                    <p class="mb-2"><strong>Purpose:</strong> Event handling and communication between components</p>
-                                    <p class="mb-3"><strong>Implementation:</strong></p>
+                                    <p class="mb-2"><strong>What is it?</strong> The Observer pattern is like a subscription system - components can subscribe to events and get notified when those events occur.</p>
+                                    <p class="mb-3"><strong>How we use it:</strong> In our system, this pattern enables real-time communication between different parts of the application. For example, when a user speaks, multiple components need to know about it:</p>
                                     <ul class="list-unstyled ms-4 mb-3">
-                                        <li>• Base class: <code>EventEmitter</code> from Node.js</li>
-                                        <li>• Used in: <code>ServiceController</code>, <code>MessageReader</code>, <code>MediaReceiver</code></li>
+                                        <li>• The Speech-to-Text service needs to process the audio</li>
+                                        <li>• The virtual agent needs to show listening indicators</li>
+                                        <li>• The UI needs to update its state</li>
                                     </ul>
-                                    <p class="mb-2"><strong>Key features:</strong></p>
+                                    <p class="mb-2"><strong>Benefits:</strong></p>
                                     <ul class="list-unstyled ms-4 mb-3">
-                                        <li>• Event-based communication</li>
-                                        <li>• Loose coupling between components</li>
-                                        <li>• Asynchronous event handling</li>
+                                        <li>• Components don't need to know about each other directly</li>
+                                        <li>• Easy to add new features without changing existing code</li>
+                                        <li>• Enables real-time updates across the system</li>
                                     </ul>
                                     <div class="mermaid mb-4">
-                                        <img src="assets/images/graphs-n-schemas/observer-diagram.png" alt="Observer Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 50%; max-height: 300px; width: auto; display: block; margin: 0 auto;">
+                                        <img src="assets/images/graphs-n-schemas/observer-diagram.png" alt="Observer Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 70%; max-height: 400px; width: auto; display: block; margin: 0 auto;">
+                                        <p class="text-muted text-center">The Observer pattern showing how events flow through the system</p>
                                     </div>
                                 </div>
 
                                 <div class="pattern-section mb-4">
                                     <h4 class="h5 mb-3">2. Template Method Pattern</h4>
-                                    <p class="mb-2"><strong>Purpose:</strong> Standardize service initialization and lifecycle</p>
-                                    <p class="mb-3"><strong>Implementation:</strong></p>
+                                    <p class="mb-2"><strong>What is it?</strong> Think of this pattern like a cooking recipe with some steps that must be followed exactly and others that can be customized. It defines a skeleton of operations while allowing some steps to be overridden.</p>
+                                    <p class="mb-3"><strong>How we use it:</strong> Our ApplicationController provides a standard way to initialize and run services while allowing each service to define its own specific behavior:</p>
                                     <ul class="list-unstyled ms-4 mb-3">
-                                        <li>• Base class: <code>ApplicationController</code></li>
-                                        <li>• Used in: <code>ConversationalAgent</code></li>
-                                    </ul>
-                                    <p class="mb-2"><strong>Key features:</strong></p>
-                                    <ul class="list-unstyled ms-4 mb-3">
-                                        <li>• Abstract initialization steps</li>
-                                        <li>• Consistent component registration</li>
-                                        <li>• Standardized pipeline definition</li>
+                                        <li>• Every service follows the same lifecycle (initialize → configure → start)</li>
+                                        <li>• Each service can customize how it handles these steps</li>
+                                        <li>• Ensures consistent behavior across different services</li>
                                     </ul>
                                     <div class="mermaid mb-4">
-                                        <img src="assets/images/graphs-n-schemas/template-diagram.png" alt="Template Method Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 50%; max-height: 300px; width: auto; display: block; margin: 0 auto;">
+                                        <img src="assets/images/graphs-n-schemas/template-diagram.png" alt="Template Method Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 70%; max-height: 400px; width: auto; display: block; margin: 0 auto;">
+                                        <p class="text-muted text-center">The Template Method pattern showing standard service lifecycle</p>
                                     </div>
                                 </div>
 
                                 <div class="pattern-section mb-4">
                                     <h4 class="h5 mb-3">3. Factory Pattern</h4>
-                                    <p class="mb-2"><strong>Purpose:</strong> Component creation and initialization</p>
-                                    <p class="mb-3"><strong>Implementation:</strong></p>
+                                    <p class="mb-2"><strong>What is it?</strong> The Factory pattern is like a specialized workshop that knows how to create different types of components. Instead of creating objects directly, we ask the factory to create them for us.</p>
+                                    <p class="mb-3"><strong>How we use it:</strong> When the ConversationalAgent needs different services (speech, text, etc.), it uses factories to create them:</p>
                                     <ul class="list-unstyled ms-4 mb-3">
-                                        <li>• Used in: <code>ConversationalAgent.registerComponents()</code></li>
-                                    </ul>
-                                    <p class="mb-2"><strong>Key features:</strong></p>
-                                    <ul class="list-unstyled ms-4 mb-3">
-                                        <li>• Centralized component creation</li>
-                                        <li>• Dependency injection</li>
-                                        <li>• Component lifecycle management</li>
+                                        <li>• Centralizes component creation logic</li>
+                                        <li>• Makes it easy to switch between different implementations</li>
+                                        <li>• Handles complex initialization requirements</li>
                                     </ul>
                                     <div class="mermaid mb-4">
-                                        <img src="assets/images/graphs-n-schemas/factory-diagram.png" alt="Factory Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 50%; max-height: 300px; width: auto; display: block; margin: 0 auto;">
+                                        <img src="assets/images/graphs-n-schemas/factory-diagram.png" alt="Factory Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 70%; max-height: 400px; width: auto; display: block; margin: 0 auto;">
+                                        <p class="text-muted text-center">The Factory pattern showing how components are created</p>
                                     </div>
                                 </div>
 
                                 <div class="pattern-section mb-4">
                                     <h4 class="h5 mb-3">4. Strategy Pattern</h4>
-                                    <p class="mb-2"><strong>Purpose:</strong> Service implementation variations</p>
-                                    <p class="mb-3"><strong>Implementation:</strong></p>
+                                    <p class="mb-2"><strong>What is it?</strong> The Strategy pattern is like having interchangeable tools for the same job. It allows us to switch between different algorithms or approaches at runtime.</p>
+                                    <p class="mb-3"><strong>How we use it:</strong> Our AI services use this pattern to support different implementation strategies:</p>
                                     <ul class="list-unstyled ms-4 mb-3">
-                                        <li>• Used in: Service implementations (STT, TTS, RAG)</li>
-                                    </ul>
-                                    <p class="mb-2"><strong>Key features:</strong></p>
-                                    <ul class="list-unstyled ms-4 mb-3">
-                                        <li>• Interchangeable service implementations</li>
-                                        <li>• Runtime service selection</li>
-                                        <li>• Service-specific configuration</li>
+                                        <li>• Speech-to-Text can switch between local and cloud processing</li>
+                                        <li>• Text-to-Speech can use different voice synthesis methods</li>
+                                        <li>• RAG service can use different embedding approaches</li>
                                     </ul>
                                     <div class="mermaid mb-4">
-                                        <img src="assets/images/graphs-n-schemas/strategy-diagram.png" alt="Strategy Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 50%; max-height: 300px; width: auto; display: block; margin: 0 auto;">
+                                        <img src="assets/images/graphs-n-schemas/strategy-diagram.png" alt="Strategy Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 70%; max-height: 400px; width: auto; display: block; margin: 0 auto;">
+                                        <p class="text-muted text-center">The Strategy pattern showing interchangeable service implementations</p>
                                     </div>
                                 </div>
 
                                 <div class="pattern-section mb-4">
                                     <h4 class="h5 mb-3">5. Mediator Pattern</h4>
-                                    <p class="mb-2"><strong>Purpose:</strong> Centralized communication control</p>
-                                    <p class="mb-3"><strong>Implementation:</strong></p>
+                                    <p class="mb-2"><strong>What is it?</strong> Think of the Mediator pattern like an air traffic controller - instead of planes communicating directly with each other, they all communicate through the controller.</p>
+                                    <p class="mb-3"><strong>How we use it:</strong> Our NetworkScene acts as a mediator for all network communication:</p>
                                     <ul class="list-unstyled ms-4 mb-3">
-                                        <li>• Used in: <code>NetworkScene</code> as mediator</li>
-                                    </ul>
-                                    <p class="mb-2"><strong>Key features:</strong></p>
-                                    <ul class="list-unstyled ms-4 mb-3">
-                                        <li>• Centralized message routing</li>
-                                        <li>• Decoupled component communication</li>
-                                        <li>• Event coordination</li>
+                                        <li>• Handles message routing between components</li>
+                                        <li>• Manages peer connections and room state</li>
+                                        <li>• Coordinates real-time updates</li>
                                     </ul>
                                     <div class="mermaid mb-4">
-                                        <img src="assets/images/graphs-n-schemas/mediator-diagram.png" alt="Mediator Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 50%; max-height: 300px; width: auto; display: block; margin: 0 auto;">
+                                        <img src="assets/images/graphs-n-schemas/mediator-diagram.png" alt="Mediator Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 70%; max-height: 400px; width: auto; display: block; margin: 0 auto;">
+                                        <p class="text-muted text-center">The Mediator pattern showing centralized communication control</p>
                                     </div>
                                 </div>
 
                                 <div class="pattern-section mb-4">
-                                    <h4 class="h5 mb-3">Pattern Relationships</h4>
+                                    <h4 class="h5 mb-3">How These Patterns Work Together</h4>
+                                    <p class="mb-3">These patterns complement each other to create a robust and flexible system:</p>
+                                    <ul class="list-unstyled ms-4 mb-4">
+                                        <li>• The Observer pattern enables event-driven communication</li>
+                                        <li>• The Template Method ensures consistent service behavior</li>
+                                        <li>• The Factory creates the right components when needed</li>
+                                        <li>• The Strategy pattern allows for flexible implementations</li>
+                                        <li>• The Mediator coordinates all these interactions</li>
+                                    </ul>
                                     <div class="mermaid mb-4">
-                                        <img src="assets/images/graphs-n-schemas/patterns-rel-diagram.png" alt="Patterns Relationships Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 60%; max-height: 400px; width: auto; display: block; margin: 0 auto;">
+                                        <img src="assets/images/graphs-n-schemas/patterns-rel-diagram.png" alt="Patterns Relationships Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 70%; max-height: 400px; width: auto; display: block; margin: 0 auto;">
+                                        <p class="text-muted text-center">How different design patterns interact in our system</p>
                                     </div>
                                 </div>
                             </div>
@@ -713,7 +722,10 @@ updateOne(
                             <h2 class="mb-4">Data Storage</h2>
                             
                             <h3 class="h4 mb-4">Data Schema</h3>
+                            <p class="mb-4">Our database schema is designed to support the complex relationships between different entities in the system while maintaining flexibility for future extensions. Let's explore how the data is organized:</p>
+                            
                             <img src="assets/images/graphs-n-schemas/er-diagram.png" alt="ER Diagram" class="img-fluid rounded-4 mb-4" style="max-height: 800px; width: auto; display: block; margin: 0 auto;">
+                            <p class="text-muted text-center mb-4">Entity Relationship diagram showing how different data entities are connected</p>
 
                             <div class="mt-4">
                                 <h4 class="h5 mb-3">Database Structure Overview</h4>
@@ -764,10 +776,14 @@ updateOne(
                                     <div class="col-md-6 mb-4">
                                         <h5 class="h6 fw-bold mb-3">Pairing System Structure</h5>
                                         <ul class="list-unstyled ms-4">
-                                            <li>• Unique pairing codes</li>
-                                            <li>• Organization references</li>
-                                            <li>• Timestamp tracking</li>
-                                            <li>• Active status management</li>
+                                            <li>• Enables organization members to access:</li>
+                                            <li class="ms-4">- Organization's activities in Unity editor app</li>
+                                            <li class="ms-4">- IBM Cloud Object Storage resources</li>
+                                            <li>• Features:</li>
+                                            <li class="ms-4">- Unique 6-character pairing codes</li>
+                                            <li class="ms-4">- 24-hour code expiration</li>
+                                            <li class="ms-4">- Organization-specific access control</li>
+                                            <li class="ms-4">- Active status tracking</li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 mb-4">
@@ -816,7 +832,7 @@ updateOne(
                     <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
                         <div class="card-body">
                             <h2 class="mb-4">Packages and APIs</h2>
-
+                            
                             <!-- NextJS Admin App -->
                             <div class="mb-5">
                                 <h3 class="h4 mb-4">NextJS Admin App</h3>
@@ -879,8 +895,10 @@ updateOne(
                                         <div class="col-md-6 mb-4">
                                             <h5 class="h6 fw-bold mb-2">Authentication & Organization</h5>
                                             <ul class="list-unstyled ms-4">
-                                                <li>• POST /api/pairing/generate</li>
-                                                <li>• POST /api/pairing/validate</li>
+                                                <li>• POST /api/pairing/generate: Generate organization access code</li>
+                                                <li>• POST /api/pairing/validate: Validate code and grant access to:</li>
+                                                <li class="ms-4">- Unity editor app for activity editing</li>
+                                                <li class="ms-4">- IBM Cloud Object Storage resources</li>
                                             </ul>
                                         </div>
                                         <div class="col-md-6 mb-4">
