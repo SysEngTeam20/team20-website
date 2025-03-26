@@ -344,18 +344,83 @@
                             <h2 class="mb-4">Sequence Diagrams</h2>
                             
                             <div class="mb-5">
-                                <h3 class="h4 mb-3">Sequence Diagram 1</h3>
-                                <!-- Placeholder for sequence diagram 1 -->
-                                <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 400px;">
-                                    <p class="text-muted">Sequence Diagram 1</p>
+                                <h3 class="h4 mb-3">Scene Creation Flow</h3>
+                                <img src="assets/images/graphs-n-schemas/scene-creation-diagram.png" alt="Scene Creation Flow Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 90%; max-height: 500px; width: auto; display: block; margin: 0 auto;">
+                                <div class="diagram-description">
+                                    <p class="mb-3"><strong>Purpose:</strong> Illustrates the process of creating and configuring a new scene in the system.</p>
+                                    <p class="mb-3"><strong>Flow Description:</strong></p>
+                                    <ul class="list-unstyled ms-4 mb-3">
+                                        <li>• Client initiates scene creation with activity and organization IDs</li>
+                                        <li>• Scene Service creates a new scene record in the database</li>
+                                        <li>• Client adds scene configuration which is stored in the database</li>
+                                        <li>• Scene objects are added and validated by the Asset Service</li>
+                                        <li>• Complete scene data is returned to the client</li>
+                                    </ul>
                                 </div>
                             </div>
                             
                             <div class="mb-5">
-                                <h3 class="h4 mb-3">Sequence Diagram 2</h3>
-                                <!-- Placeholder for sequence diagram 2 -->
-                                <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 400px;">
-                                    <p class="text-muted">Sequence Diagram 2</p>
+                                <h3 class="h4 mb-3">Pairing Code Generation and Validation Flow</h3>
+                                <img src="assets/images/graphs-n-schemas/pairing-diagram.png" alt="Pairing Code Flow Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 90%; max-height: 500px; width: auto; display: block; margin: 0 auto;">
+                                <div class="diagram-description">
+                                    <p class="mb-3"><strong>Purpose:</strong> Illustrates the process of generating and validating pairing codes for organization access.</p>
+                                    <p class="mb-3"><strong>Flow Description:</strong></p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="h6 mb-2">Pairing Code Generation:</h5>
+                                            <ul class="list-unstyled ms-4 mb-3">
+                                                <li>• Client requests new pairing code</li>
+                                                <li>• PairingService generates 6-character code</li>
+                                                <li>• Code is stored with organization ID</li>
+                                                <li>• 24-hour expiration time is set</li>
+                                                <li>• Code is returned to client</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="h6 mb-2">Pairing Code Validation:</h5>
+                                            <ul class="list-unstyled ms-4 mb-3">
+                                                <li>• Client submits code</li>
+                                                <li>• PairingService queries database</li>
+                                                <li>• System checks validity and expiration</li>
+                                                <li>• Validation result returned</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-5">
+                                <h3 class="h4 mb-3">Ubiq-Genie Interaction Flow</h3>
+                                <img src="assets/images/graphs-n-schemas/ubiq-genie-diagram.png" alt="Ubiq-Genie Flow Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 90%; max-height: 500px; width: auto; display: block; margin: 0 auto;">
+                                <div class="diagram-description">
+                                    <p class="mb-3"><strong>Purpose:</strong> Demonstrates the flow of voice interaction and AI response generation in the system.</p>
+                                    <p class="mb-3"><strong>Components and Flow:</strong></p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="h6 mb-2">Main Components:</h5>
+                                            <ul class="list-unstyled ms-4 mb-3">
+                                                <li>• Unity Scene (Client)</li>
+                                                <li>• MediaReceiver (Audio)</li>
+                                                <li>• Speech-to-Text Service</li>
+                                                <li>• RAG Service</li>
+                                                <li>• Local LLM Server</li>
+                                                <li>• Text-to-Speech Service</li>
+                                                <li>• NetworkScene (Server)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="h6 mb-2">Sequence of Events:</h5>
+                                            <ul class="list-unstyled ms-4 mb-3">
+                                                <li>• User speaks into microphone</li>
+                                                <li>• Audio data processed</li>
+                                                <li>• Speech detected and transcribed</li>
+                                                <li>• RAG service queries LLM</li>
+                                                <li>• Response converted to speech</li>
+                                                <li>• Audio played to user</li>
+                                                <li>• Agent performs gestures</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -373,8 +438,245 @@
                     <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
                         <div class="card-body">
                             <h2 class="mb-4">Design Patterns</h2>
-                            
-                            <!-- Placeholder for design patterns content -->
+
+                            <!-- Ubiq-Genie Patterns -->
+                            <div class="mb-5">
+                                <h3 class="h4 mb-4">Ubiq-Genie Patterns</h3>
+
+                                <div class="pattern-section mb-4">
+                                    <h4 class="h5 mb-3">1. Observer Pattern</h4>
+                                    <p class="mb-2"><strong>Purpose:</strong> Event handling and communication between components</p>
+                                    <p class="mb-3"><strong>Implementation:</strong></p>
+                                    <ul class="list-unstyled ms-4 mb-3">
+                                        <li>• Base class: <code>EventEmitter</code> from Node.js</li>
+                                        <li>• Used in: <code>ServiceController</code>, <code>MessageReader</code>, <code>MediaReceiver</code></li>
+                                    </ul>
+                                    <p class="mb-2"><strong>Key features:</strong></p>
+                                    <ul class="list-unstyled ms-4 mb-3">
+                                        <li>• Event-based communication</li>
+                                        <li>• Loose coupling between components</li>
+                                        <li>• Asynchronous event handling</li>
+                                    </ul>
+                                    <div class="mermaid mb-4">
+                                        <img src="assets/images/graphs-n-schemas/observer-diagram.png" alt="Observer Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 50%; max-height: 300px; width: auto; display: block; margin: 0 auto;">
+                                    </div>
+                                </div>
+
+                                <div class="pattern-section mb-4">
+                                    <h4 class="h5 mb-3">2. Template Method Pattern</h4>
+                                    <p class="mb-2"><strong>Purpose:</strong> Standardize service initialization and lifecycle</p>
+                                    <p class="mb-3"><strong>Implementation:</strong></p>
+                                    <ul class="list-unstyled ms-4 mb-3">
+                                        <li>• Base class: <code>ApplicationController</code></li>
+                                        <li>• Used in: <code>ConversationalAgent</code></li>
+                                    </ul>
+                                    <p class="mb-2"><strong>Key features:</strong></p>
+                                    <ul class="list-unstyled ms-4 mb-3">
+                                        <li>• Abstract initialization steps</li>
+                                        <li>• Consistent component registration</li>
+                                        <li>• Standardized pipeline definition</li>
+                                    </ul>
+                                    <div class="mermaid mb-4">
+                                        <img src="assets/images/graphs-n-schemas/template-diagram.png" alt="Template Method Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 50%; max-height: 300px; width: auto; display: block; margin: 0 auto;">
+                                    </div>
+                                </div>
+
+                                <div class="pattern-section mb-4">
+                                    <h4 class="h5 mb-3">3. Factory Pattern</h4>
+                                    <p class="mb-2"><strong>Purpose:</strong> Component creation and initialization</p>
+                                    <p class="mb-3"><strong>Implementation:</strong></p>
+                                    <ul class="list-unstyled ms-4 mb-3">
+                                        <li>• Used in: <code>ConversationalAgent.registerComponents()</code></li>
+                                    </ul>
+                                    <p class="mb-2"><strong>Key features:</strong></p>
+                                    <ul class="list-unstyled ms-4 mb-3">
+                                        <li>• Centralized component creation</li>
+                                        <li>• Dependency injection</li>
+                                        <li>• Component lifecycle management</li>
+                                    </ul>
+                                    <div class="mermaid mb-4">
+                                        <img src="assets/images/graphs-n-schemas/factory-diagram.png" alt="Factory Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 50%; max-height: 300px; width: auto; display: block; margin: 0 auto;">
+                                    </div>
+                                </div>
+
+                                <div class="pattern-section mb-4">
+                                    <h4 class="h5 mb-3">4. Strategy Pattern</h4>
+                                    <p class="mb-2"><strong>Purpose:</strong> Service implementation variations</p>
+                                    <p class="mb-3"><strong>Implementation:</strong></p>
+                                    <ul class="list-unstyled ms-4 mb-3">
+                                        <li>• Used in: Service implementations (STT, TTS, RAG)</li>
+                                    </ul>
+                                    <p class="mb-2"><strong>Key features:</strong></p>
+                                    <ul class="list-unstyled ms-4 mb-3">
+                                        <li>• Interchangeable service implementations</li>
+                                        <li>• Runtime service selection</li>
+                                        <li>• Service-specific configuration</li>
+                                    </ul>
+                                    <div class="mermaid mb-4">
+                                        <img src="assets/images/graphs-n-schemas/strategy-diagram.png" alt="Strategy Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 50%; max-height: 300px; width: auto; display: block; margin: 0 auto;">
+                                    </div>
+                                </div>
+
+                                <div class="pattern-section mb-4">
+                                    <h4 class="h5 mb-3">5. Mediator Pattern</h4>
+                                    <p class="mb-2"><strong>Purpose:</strong> Centralized communication control</p>
+                                    <p class="mb-3"><strong>Implementation:</strong></p>
+                                    <ul class="list-unstyled ms-4 mb-3">
+                                        <li>• Used in: <code>NetworkScene</code> as mediator</li>
+                                    </ul>
+                                    <p class="mb-2"><strong>Key features:</strong></p>
+                                    <ul class="list-unstyled ms-4 mb-3">
+                                        <li>• Centralized message routing</li>
+                                        <li>• Decoupled component communication</li>
+                                        <li>• Event coordination</li>
+                                    </ul>
+                                    <div class="mermaid mb-4">
+                                        <img src="assets/images/graphs-n-schemas/mediator-diagram.png" alt="Mediator Pattern Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 50%; max-height: 300px; width: auto; display: block; margin: 0 auto;">
+                                    </div>
+                                </div>
+
+                                <div class="pattern-section mb-4">
+                                    <h4 class="h5 mb-3">Pattern Relationships</h4>
+                                    <div class="mermaid mb-4">
+                                        <img src="assets/images/graphs-n-schemas/patterns-rel-diagram.png" alt="Patterns Relationships Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 60%; max-height: 400px; width: auto; display: block; margin: 0 auto;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Admin App Patterns -->
+                            <div class="mb-5">
+                                <h3 class="h4 mb-4">Admin App Patterns</h3>
+
+                                <div class="pattern-section mb-4">
+                                    <h4 class="h5 mb-3">1. Repository Pattern</h4>
+                                    <p class="mb-2"><strong>Purpose:</strong> Abstracts data persistence operations</p>
+                                    <p class="mb-3"><strong>Implementation:</strong> Collection class in db.ts</p>
+                                    <pre class="bg-light p-3 rounded"><code class="language-typescript">class Collection&lt;T extends { _id?: string }&gt; {
+  private tableName: string;
+  
+  constructor(tableName: string) {
+    this.tableName = tableName;
+    this.ensureTableExists();
+    this.ensureIndexes();
+  }
+
+  // CRUD Operations
+  findOne(query: Partial&lt;T&gt;): T | null
+  find(query: Partial&lt;T&gt; = {}): T[]
+  insertOne(doc: T): { insertedId: string }
+  updateOne(filter: Partial&lt;T&gt;, update: UpdateOptions): UpdateResult
+  deleteOne(filter: Partial&lt;T&gt;): { deletedCount: number }
+}</code></pre>
+                                </div>
+
+                                <div class="pattern-section mb-4">
+                                    <h4 class="h5 mb-3">2. Singleton Pattern</h4>
+                                    <p class="mb-2"><strong>Purpose:</strong> Ensures single database connection instance</p>
+                                    <p class="mb-3"><strong>Implementation:</strong> SQLite database connection in sqlite.ts</p>
+                                    <pre class="bg-light p-3 rounded"><code class="language-typescript">// Development mode singleton
+if (process.env.NODE_ENV === "development") {
+  let globalWithSqlite = global as typeof globalThis & {
+    _sqliteDatabase?: BetterSqlite3.Database;
+  };
+
+  if (!globalWithSqlite._sqliteDatabase) {
+    globalWithSqlite._sqliteDatabase = new BetterSqlite3(DB_PATH);
+    initDatabase(globalWithSqlite._sqliteDatabase);
+  }
+  db = globalWithSqlite._sqliteDatabase;
+}</code></pre>
+                                </div>
+
+                                <div class="pattern-section mb-4">
+                                    <h4 class="h5 mb-3">3. Factory Pattern</h4>
+                                    <p class="mb-2"><strong>Purpose:</strong> Creates database client instances</p>
+                                    <p class="mb-3"><strong>Implementation:</strong> getDbClient function in db.ts</p>
+                                    <pre class="bg-light p-3 rounded"><code class="language-typescript">export function getDbClient() {
+  return {
+    db: function(dbName: string) {
+      return {
+        collection: function&lt;T extends { _id?: string }&gt;(collectionName: string) {
+          return new Collection&lt;T&gt;(collectionName);
+        }
+      };
+    }
+  };
+}</code></pre>
+                                </div>
+
+                                <div class="pattern-section mb-4">
+                                    <h4 class="h5 mb-3">4. Strategy Pattern</h4>
+                                    <p class="mb-2"><strong>Purpose:</strong> Handles different types of database operations</p>
+                                    <p class="mb-3"><strong>Implementation:</strong> Relations class for handling relationships</p>
+                                    <pre class="bg-light p-3 rounded"><code class="language-typescript">export class Relations {
+  static async linkDocumentToActivity(documentId: string, activityId: string): Promise&lt;void&gt;
+  static async unlinkDocumentFromActivity(documentId: string, activityId: string): Promise&lt;void&gt;
+  static getDocumentsByActivityId(activityId: string): string[]
+  static getActivitiesByDocumentId(documentId: string): string[]
+}</code></pre>
+                                </div>
+
+                                <div class="pattern-section mb-4">
+                                    <h4 class="h5 mb-3">5. Adapter Pattern</h4>
+                                    <p class="mb-2"><strong>Purpose:</strong> Adapts MongoDB-like operations to SQLite</p>
+                                    <p class="mb-3"><strong>Implementation:</strong> Collection class methods mimicking MongoDB operations</p>
+                                    <pre class="bg-light p-3 rounded"><code class="language-typescript">// MongoDB-like operations
+updateOne(
+  filter: Partial&lt;T&gt;,
+  update: { 
+    $set?: Partial&lt;T&gt;, 
+    $addToSet?: Record&lt;string, any&gt;, 
+    $pull?: Record&lt;string, any&gt; 
+  }
+): { matchedCount: number, modifiedCount: number }</code></pre>
+                                </div>
+
+                                <div class="pattern-section mb-4">
+                                    <h4 class="h5 mb-3">Benefits of Used Patterns</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled ms-4">
+                                                <li class="mb-3">
+                                                    <strong>Repository Pattern:</strong>
+                                                    <ul class="list-unstyled ms-4">
+                                                        <li>• Centralizes data access logic</li>
+                                                        <li>• Provides consistent interface</li>
+                                                        <li>• Makes testing easier</li>
+                                                    </ul>
+                                                </li>
+                                                <li class="mb-3">
+                                                    <strong>Singleton Pattern:</strong>
+                                                    <ul class="list-unstyled ms-4">
+                                                        <li>• Ensures single database connection</li>
+                                                        <li>• Prevents resource waste</li>
+                                                        <li>• Maintains connection state</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled ms-4">
+                                                <li class="mb-3">
+                                                    <strong>Factory Pattern:</strong>
+                                                    <ul class="list-unstyled ms-4">
+                                                        <li>• Flexible object creation</li>
+                                                        <li>• Encapsulates creation logic</li>
+                                                        <li>• Easy to extend</li>
+                                                    </ul>
+                                                </li>
+                                                <li class="mb-3">
+                                                    <strong>Adapter Pattern:</strong>
+                                                    <ul class="list-unstyled ms-4">
+                                                        <li>• Makes SQLite work like MongoDB</li>
+                                                        <li>• Reduces learning curve</li>
+                                                        <li>• Maintains consistent API</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -383,7 +685,7 @@
     </section>
 
     <!-- Class Diagrams -->
-    <section id="class-diagrams" class="py-5">
+    <!-- <section id="class-diagrams" class="py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -391,7 +693,6 @@
                         <div class="card-body">
                             <h2 class="mb-4">Class Diagrams</h2>
                             
-                            <!-- Placeholder for class diagrams content -->
                             <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 400px;">
                                 <p class="text-muted">Class Diagram</p>
                             </div>
@@ -400,7 +701,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Data Storage -->
     <section id="data-storage" class="py-5">
@@ -515,8 +816,241 @@
                     <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
                         <div class="card-body">
                             <h2 class="mb-4">Packages and APIs</h2>
-                            
-                            <!-- Placeholder for packages and APIs content -->
+
+                            <!-- NextJS Admin App -->
+                            <div class="mb-5">
+                                <h3 class="h4 mb-4">NextJS Admin App</h3>
+
+                                <div class="mb-4">
+                                    <h4 class="h5 mb-3">Core Dependencies</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Framework and Runtime</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• Next.js (v15.1.3)</li>
+                                                <li>• React (v19.0.0)</li>
+                                                <li>• Electron (v35.0.0)</li>
+                                                <li>• TypeScript (v5)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Database</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• better-sqlite3 (v11.8.1)</li>
+                                                <li>• sqlite3 (v5.1.7)</li>
+                                                <li>• mongodb (v6.12.0)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Authentication & Security</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• @clerk/nextjs (v6.9.6)</li>
+                                                <li>• jose (v5.9.6)</li>
+                                                <li>• zod (v3.24.2)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Cloud Storage</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• ibm-cos-sdk (v1.14.0)</li>
+                                                <li>• formidable (v3.5.2)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <h5 class="h6 fw-bold mb-2">UI Components</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• @radix-ui/react-* (Alert Dialog, Checkbox, Dialog, etc.)</li>
+                                            <li>• lucide-react (v0.469.0)</li>
+                                            <li>• tailwindcss (v3.4.1)</li>
+                                            <li>• tailwind-merge (v2.6.0)</li>
+                                            <li>• class-variance-authority (v0.7.1)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h4 class="h5 mb-3">API Endpoints</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Authentication & Organization</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• POST /api/pairing/generate</li>
+                                                <li>• POST /api/pairing/validate</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Asset Management</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• GET/PATCH/DELETE /api/assets/[assetId]</li>
+                                                <li>• GET /api/assets/[assetId]/access</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Document Management</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• GET/POST /api/documents</li>
+                                                <li>• DELETE /api/documents/[documentId]</li>
+                                                <li>• POST /api/documents/[documentId]/unlink</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Activity Management</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• GET/POST /api/activities</li>
+                                                <li>• GET/PATCH/DELETE /api/activities/[activityId]</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ubiq Genie -->
+                            <div class="mb-5">
+                                <h3 class="h4 mb-4">Ubiq Genie Framework</h3>
+
+                                <div class="mb-4">
+                                    <h4 class="h5 mb-3">Core Framework Dependencies</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Ubiq Framework</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• ubiq-server: Server-side networking</li>
+                                                <li>• ubiq: Client-side networking</li>
+                                                <li>• Real-time communication</li>
+                                                <li>• Room & peer management</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Node.js Dependencies</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• ws: WebSocket client/server</li>
+                                                <li>• nconf: Configuration management</li>
+                                                <li>• dotenv: Environment variables</li>
+                                                <li>• EventEmitter: Event handling</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h4 class="h5 mb-3">API Endpoints</h4>
+                                    <div class="row">
+                                        <div class="col-md-12 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Room Management</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• /ws/room: Room management</li>
+                                                <li>• /ws/peer: Peer connections</li>
+                                                <li>• /ws/media: Media streaming</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h4 class="h5 mb-3">Performance Requirements</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="h6 fw-bold mb-2">API Latency</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• WebSocket: < 50ms</li>
+                                                <li>• REST: < 100ms</li>
+                                                <li>• LLM: < 200ms</li>
+                                                <li>• STT/TTS: < 150ms</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="h6 fw-bold mb-2">Resource Usage</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• Memory: < 2GB per service</li>
+                                                <li>• CPU: < 50% per core</li>
+                                                <li>• Network: < 10MB/s per connection</li>
+                                                <li>• Storage: < 1GB per service</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AI Services -->
+                            <div class="mb-5">
+                                <h3 class="h4 mb-4">AI Services</h3>
+
+                                <div class="mb-4">
+                                    <h4 class="h5 mb-3">API Endpoints</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">WebSocket Endpoints</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• /ws/stt: Speech-to-Text streaming</li>
+                                                <li>• /ws/tts: Text-to-Speech streaming</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">REST Endpoints</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• POST /stt: Speech-to-Text conversion</li>
+                                                <li>• POST /tts: Text-to-Speech synthesis</li>
+                                                <li>• POST /query: RAG queries</li>
+                                                <li>• POST /generate: LLM generation</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h4 class="h5 mb-3">LLM Server (Granite)</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Core Components</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• llama.cpp: Core inference engine</li>
+                                                <li>• cpp-httplib: HTTP server</li>
+                                                <li>• Model: 3.2B parameters (quantized)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Configuration</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• GPU Layers: 99</li>
+                                                <li>• Context Size: 8192 tokens</li>
+                                                <li>• CPU Threads: 4</li>
+                                                <li>• Temperature: 0.8</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h4 class="h5 mb-3">Speech Processing Server</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Key Packages</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• FastAPI (v0.115.11)</li>
+                                                <li>• faster-whisper (v1.1.1)</li>
+                                                <li>• WhisperSpeech (v0.8.9)</li>
+                                                <li>• torchaudio (v2.6.0)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <h5 class="h6 fw-bold mb-2">Models</h5>
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• STT: Whisper "base" model</li>
+                                                <li>• TTS: WhisperSpeech "s2a-q4-tiny-en+pl"</li>
+                                                <li>• Audio: 24kHz to 48kHz resampling</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
