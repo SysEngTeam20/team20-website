@@ -65,15 +65,251 @@
                         <div class="card-body">
                             <h2 class="mb-4">System Architecture</h2>
                             
+                            <div class="mb-4">
+                                <p class="lead">Portalt's architecture is designed as a modern, scalable system that seamlessly integrates virtual reality experiences with advanced AI capabilities. The platform is structured into four main layers: Frontend, Authentication, Storage, and Compute. This layered architecture ensures clear separation of concerns while enabling robust communication between components. The Frontend Layer provides intuitive interfaces for both administrators and end-users, the Authentication Layer ensures secure access control, the Storage Layer manages both local and cloud-based data, and the Compute Layer powers real-time interactions and AI services. Each layer is built with scalability, maintainability, and extensibility in mind, utilizing industry-standard design patterns and best practices.</p>
+                            </div>
+                            
                             <div class="mb-5">
-                                <!-- Placeholder for system architecture diagram -->
-                                <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 400px;">
-                                    <p class="text-muted">System Architecture Diagram</p>
-                                </div>
+                                <img src="assets/images/graphs-n-schemas/system-architecture.png" alt="System Architecture Diagram" class="img-fluid rounded-4 mb-4" style="max-height: 600px; width: auto; display: block; margin: 0 auto;">
                             </div>
                             
                             <h3 class="h4 mb-4">Component Description</h3>
-                            <!-- Placeholder for component descriptions -->
+                            
+                            <h4 class="h5 mb-3">Frontend Layer</h4>
+<ul class="list-unstyled mb-4">
+    <li class="mb-3">
+        <strong>NextJS Admin Platform:</strong> A comprehensive administrative dashboard for managing VR experiences and content.
+        <ul class="list-unstyled ms-4">
+            <li class="mb-2">
+                <strong>Scene Management:</strong>
+                <ul class="list-unstyled ms-4">
+                    <li>• Create and manage VR activities and scenes with drag-and-drop interface for 3D models</li>
+                </ul>
+            </li>
+            <li class="mb-2">
+                <strong>Activity Management:</strong>
+                <ul class="list-unstyled ms-4">
+                    <li>• Create and organize VR activities</li>
+                    <li>• Set up interactive elements and triggers</li>
+                </ul>
+            </li>
+            <li class="mb-2">
+                <strong>Asset Management:</strong>
+                <ul class="list-unstyled ms-4">
+                    <li>• Upload and manage 3D models and assets</li>
+                    <li>• Preview 3D models before use</li>
+                    <li>• Track asset usage across activities</li>
+                </ul>
+            </li>
+            <li class="mb-2">
+                <strong>Organization Management:</strong>
+                <ul class="list-unstyled ms-4">
+                    <li>• Create and manage multiple organizations</li>
+                    <li>• Generate secure pairing codes for organization activities editing access</li>
+                    <li>• Set up organization-specific content and settings</li>
+                    <li>• Manage user roles and permissions</li>
+                </ul>
+            </li>
+            <li class="mb-2">
+                <strong>Document Management:</strong>
+                <ul class="list-unstyled ms-4">
+                    <li>• Upload and organize supporting documents</li>
+                    <li>• Link documents to specific activities</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li class="mb-3">
+        <strong>VR Activity Editor App:</strong> A Unity application for editing VR activities.
+        <ul class="list-unstyled ms-4">
+            <li>• Integrates with local SQLite storage</li>
+            <li>• Supports scene object configuration</li>
+            <li>• Features asset management system</li>
+        </ul>
+    </li>
+    <li class="mb-3">
+        <strong>VR Activity Visitor App:</strong> The end-user facing application for experiencing the VR activities.
+        <ul class="list-unstyled ms-4">
+            <li>• Connects to Ubiq server for multiplayer</li>
+            <li>• Implements WebRTC-based communication</li>
+            <li>• Features real-time scene synchronization</li>
+            <li>• Supports voice interaction capabilities</li>
+        </ul>
+    </li>
+</ul>
+
+<h4 class="h5 mb-3">Authentication Layer</h4>
+<ul class="list-unstyled mb-4">
+    <li class="mb-3">
+        <strong>Clerk Auth Service:</strong> Handles user authentication, authorization, and organization management across the platform.
+        <ul class="list-unstyled ms-4">
+            <li>• Implements organization-based access control</li>
+            <li>• Features pairing code system for organization access</li>
+            <li>• Provides secure token management</li>
+            <li>• Supports multi-organization structure</li>
+            <li>• Implements role-based permissions</li>
+            <li>• Features secure session management</li>
+        </ul>
+    </li>
+    <li class="mb-3">
+        <strong>Pairing System:</strong> Secure organization access management
+        <ul class="list-unstyled ms-4">
+            <li>• Generates unique 6-character pairing codes</li>
+            <li>• Implements 24-hour code expiration</li>
+            <li>• Features active/inactive code status</li>
+            <li>• Provides organization-specific access</li>
+            <li>• Supports secure code validation</li>
+        </ul>
+    </li>
+</ul>
+
+<h4 class="h5 mb-3">Storage Layer</h4>
+                <ul class="list-unstyled mb-4">
+                    <li class="mb-3">
+                        <strong>Local SQLite DB:</strong> Stores activities and assets metadata along with configuration data locally.
+                        <ul class="list-unstyled ms-4">
+                            <li>• Implements MongoDB-like Collection interface</li>
+                            <li>• Features JSON-based document storage</li>
+                            <li>• Supports complex query operations</li>
+                            <li>• Implements efficient indexing system</li>
+                            <li>• Features automatic table creation</li>
+                            <li>• Provides transaction support</li>
+                            <li>• Implements WAL journaling mode</li>
+                        </ul>
+                    </li>
+                    <li class="mb-3">
+                        <strong>IBM Cloud Object Storage:</strong> Cloud storage and retrieval solution for assets and documents files.
+                        <ul class="list-unstyled ms-4">
+                            <li>• Implements secure file upload/download</li>
+                            <li>• Features asset versioning</li>
+                            <li>• Supports large file handling</li>
+                            <li>• Provides CDN integration</li>
+                            <li>• Implements efficient caching</li>
+                            <li>• Features access control integration</li>
+                        </ul>
+                    </li>
+                    <li class="mb-3">
+                        <strong>Data Management Features:</strong>
+                        <ul class="list-unstyled ms-4">
+                            <li>• Implements Repository pattern for data access</li>
+                            <li>• Features automatic schema validation</li>
+                            <li>• Supports complex data relationships</li>
+                            <li>• Provides efficient query optimization</li>
+                            <li>• Implements data integrity checks</li>
+                            <li>• Features automatic backup support</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                            <h4 class="h5 mb-3">Compute Layer</h4>
+                            <div class="mb-4">
+                                <p class="mb-3">The Compute Layer serves as the core processing engine of the system, handling real-time communication, AI services, and data processing. It's built on a modular architecture using several design patterns to ensure scalability, maintainability, and extensibility.</p>
+                                
+                                <h5 class="h6 mt-4">1. Ubiq Server</h5>
+                                <p class="mb-2">Central multiplayer server for Unity communication implemented with NodeJS.</p>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                    <li>• Manages WebRTC connections</li>
+                                    <li>• Handles real-time player synchronization</li>
+                                    <li>• Implements Mediator pattern for message routing</li>
+                                    <li>• Provides room management and peer connection handling</li>
+                                    <li>• Supports real-time data streaming</li>
+                                    <li>• Uses event-based communication</li>
+                                </ul>
+
+                                <h5 class="h6 mt-4">2. Genie Services Framework</h5>
+                                <p class="mb-2">Modular service architecture for AI capabilities, built on the ServiceController base class.</p>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                    <li class="mb-3">
+                                        <strong>RAG Service:</strong>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Retrieval-Augmented Generation</li>
+                                            <li>• Context-aware response generation</li>
+                                            <li>• Document retrieval and processing</li>
+                                            <li>• Integration with vector store</li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb-3">
+                                        <strong>STT Service:</strong>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Speech-to-Text conversion</li>
+                                            <li>• Real-time audio processing</li>
+                                            <li>• Wake word detection</li>
+                                            <li>• Multi-user support</li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb-3">
+                                        <strong>TTS Service:</strong>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Text-to-Speech synthesis</li>
+                                            <li>• Voice customization</li>
+                                            <li>• Streaming audio output</li>
+                                            <li>• WebSocket-based communication</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <h5 class="h6 mt-4">3. Whisper Processing Service</h5>
+                                <p class="mb-2">Advanced speech processing service with standalone integration.</p>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                    <li>• Efficient local processing</li>
+                                    <li>• High-speed speech recognition</li>
+                                    <li>• Multi-language support</li>
+                                    <li>• Real-time transcription using OpenAI Whisper</li>
+                                    <li>• Voice synthesis using Whisper Speech</li>
+                                    <li>• WebSocket-based communication</li>
+                                </ul>
+
+                                <h5 class="h6 mt-4">4. Granite LLM Service</h5>
+                                <p class="mb-2">Quantized local LLM processing (3.2B parameters) with REST API interface.</p>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                    <li>• Efficient local processing</li>
+                                    <li>• Low latency responses</li>
+                                    <li>• Context-aware generation</li>
+                                    <li>• Resource-optimized operation</li>
+                                </ul>
+
+                                <h5 class="h6 mt-4">Integration & Performance</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="fw-bold mb-2">Unity Integration</h6>
+                                        <ul class="list-unstyled ms-4 mb-3">
+                                            <li>• WebRTC-based communication</li>
+                                            <li>• Real-time audio streaming</li>
+                                            <li>• Event-based message passing</li>
+                                            <li>• State synchronization</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="fw-bold mb-2">Performance Optimization</h6>
+                                        <ul class="list-unstyled ms-4 mb-3">
+                                            <li>• Local processing for low latency</li>
+                                            <li>• Optimized audio streaming</li>
+                                            <li>• Efficient message routing</li>
+                                            <li>• Resource management</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <h5 class="h6 mt-4">Security & Monitoring</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="fw-bold mb-2">Security Measures</h6>
+                                        <ul class="list-unstyled ms-4 mb-3">
+                                            <li>• WebSocket encryption</li>
+                                            <li>• JWT-based authentication</li>
+                                            <li>• Process isolation</li>
+                                            <li>• Rate limiting</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="fw-bold mb-2">Monitoring</h6>
+                                        <ul class="list-unstyled ms-4 mb-3">
+                                            <li>• Service health checks</li>
+                                            <li>• Structured logging</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,10 +326,7 @@
                         <div class="card-body">
                             <h2 class="mb-4">Site Map</h2>
                             
-                            <!-- Placeholder for site map content -->
-                            <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 400px;">
-                                <p class="text-muted">Site Map Diagram</p>
-                            </div>
+                            <img src="assets/images/graphs-n-schemas/site-map.png" alt="Site Map Diagram" Diagram" class="img-fluid rounded-4 mb-4">
                         </div>
                     </div>
                 </div>
@@ -179,9 +412,93 @@
                             <h2 class="mb-4">Data Storage</h2>
                             
                             <h3 class="h4 mb-4">Data Schema</h3>
-                            <!-- Placeholder for ER diagram -->
-                            <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 400px;">
-                                <p class="text-muted">ER Diagram</p>
+                            <img src="assets/images/graphs-n-schemas/er-diagram.png" alt="ER Diagram" class="img-fluid rounded-4 mb-4" style="max-height: 800px; width: auto; display: block; margin: 0 auto;">
+
+                            <div class="mt-4">
+                                <h4 class="h5 mb-3">Database Structure Overview</h4>
+                                <p class="mb-4">The database implements a hybrid approach combining SQLite's ACID compliance with document-based storage flexibility, enabling both structured relationships and dynamic data storage.</p>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-3">Base Collection Structure</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Universal fields: id, data, created_at, updated_at</li>
+                                            <li>• JSON document storage in data field</li>
+                                            <li>• Timestamp tracking for all records</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-3">Main Collections</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Activities: Activity information</li>
+                                            <li>• Documents: Document metadata</li>
+                                            <li>• Assets: Asset information</li>
+                                            <li>• Organizations: Organization data</li>
+                                            <li>• Scenes: Scene information</li>
+                                            <li>• PairingCodes: Organization access codes</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-3">Relationships & Junction Tables</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• ActivityDocuments: Many-to-many activity-document relations</li>
+                                            <li>• Scene-Activity relationships</li>
+                                            <li>• Organization-Scene associations</li>
+                                            <li>• Configuration linkages</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-3">Configuration Collections</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• ScenesConfiguration: Scene-level settings</li>
+                                            <li>• SceneConfiguration: Object-level configurations</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-3">Pairing System Structure</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Unique pairing codes</li>
+                                            <li>• Organization references</li>
+                                            <li>• Timestamp tracking</li>
+                                            <li>• Active status management</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-3">Index Structure</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• idx_scenes_activity: Activity indexing</li>
+                                            <li>• idx_scenes_org: Organization indexing</li>
+                                            <li>• idx_scene_config: Configuration indexing</li>
+                                            <li>• Universal updated_at indexing</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <h5 class="h6 fw-bold mb-3">Key Features</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• Flexible document storage</li>
+                                                <li>• Strong entity relationships</li>
+                                                <li>• Organization-based access control</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled ms-4">
+                                                <li>• Comprehensive asset management</li>
+                                                <li>• Efficient document handling</li>
+                                                <li>• Secure pairing system</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
