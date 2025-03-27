@@ -147,52 +147,247 @@
                         <div class="card-body">
                             <h2 class="mb-4">Key Feature 3: User Authentication and Management</h2>
                             
-                            <!-- Placeholder for feature 3 content -->
-                            
-                            <div class="code-snippet mt-4">
-                                <h4 class="h5 mb-3">Code Snippet</h4>
-                                <pre class="bg-light p-3 rounded-4"><code class="language-javascript">
-// Code snippet will be added later
-                                </code></pre>
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Overview</h3>
+                                <p class="mb-4">The application implements a comprehensive authentication and user management system using Clerk, a modern authentication service. The system provides secure user authentication, organization management, and role-based access control.</p>
                             </div>
-                            
-                            <div class="implementation-diagram mt-4">
-                                <h4 class="h5 mb-3">Implementation Diagram</h4>
-                                <!-- Placeholder for diagram -->
-                                <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 300px;">
-                                    <p class="text-muted">Implementation Diagram for User Authentication and Management</p>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Implementation Details</h3>
+                                
+                                <h5 class="h6 mb-2">2.1 Authentication Provider</h5>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">&lt;!-- src/pages/_app.tsx --&gt;
+import { ClerkProvider } from "@clerk/nextjs";
+
+export default function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    &lt;ClerkProvider {...pageProps}&gt;
+      &lt;Layout&gt;
+        &lt;Component {...pageProps} /&gt;
+      &lt;/Layout&gt;
+    &lt;/ClerkProvider&gt;
+  );
+}</code></pre>
+
+                                <h5 class="h6 mb-2">2.2 Authentication Pages</h5>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">&lt;!-- src/pages/sign-in/[[...rest]]/index.tsx --&gt;
+import { SignIn } from "@clerk/nextjs";
+
+export default function LoginPage() {
+  return (
+    &lt;main className="h-screen w-full flex items-center justify-center bg-gray-50"&gt;
+      &lt;div className="w-full max-w-md p-8"&gt;
+        &lt;h1 className="text-2xl font-bold text-center mb-8 text-gray-800"&gt;
+          Welcome Back
+        &lt;/h1&gt;
+        &lt;SignIn /&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+  );
+}</code></pre>
+
+                                <h4 class="h5 mb-3">3. Middleware Implementation</h4>
+                                <p class="mb-3">The application implements a custom middleware to handle authentication and organization selection:</p>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">// src/middleware.ts
+export default clerkMiddleware(async (auth, req) =&gt; {
+  const { userId, sessionClaims, redirectToSignIn } = await auth();
+
+  // Handle public routes
+  if(isPublicRoute(req)){
+    return NextResponse.next();
+  }
+
+  // Handle unauthenticated users
+  if (!userId) {
+    return redirectToSignIn();
+  }
+
+  // Handle organization selection
+  if (userId && !sessionClaims.org_id && 
+      req.nextUrl.pathname !== "/organization-select") {
+    return Response.redirect(new URL("/organization-select", req.url));
+  }
+
+  return NextResponse.next();
+});</code></pre>
+
+                                <h4 class="h5 mb-3">4. Organization Management</h4>
+                                <p class="mb-3">The application implements organization-based access control:</p>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">// src/pages/organization-select/index.tsx
+import { OrganizationList } from "@clerk/nextjs";
+
+export default function OrganizationSelectPage() {
+  return (
+    &lt;main className="h-screen w-full flex items-center justify-center bg-gray-50"&gt;
+      &lt;div className="w-full max-w-md p-8"&gt;
+        &lt;h1 className="text-2xl font-bold text-center mb-8 text-gray-800"&gt;
+          Select Organization
+        &lt;/h1&gt;
+        &lt;OrganizationList
+          afterCreateOrganizationUrl="/"
+          afterSelectOrganizationUrl="/"
+        /&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+  );
+}</code></pre>
+
+                                <h4 class="h5 mb-3">5. API Authentication</h4>
+                                <p class="mb-3">All API routes implement organization-based authentication:</p>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">// Example API route with authentication
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const { orgId } = getAuth(req);
+  if (!orgId) return res.status(401).json({ message: "Unauthorized" });
+  
+  // Protected route logic
+}</code></pre>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Authentication Flow</h3>
+                                <img src="assets/images/graphs-n-schemas/auth-flow-diagram.svg" alt="Authentication Flow Diagram" class="img-fluid rounded-4 mb-4" style="max-width: 90%; max-height: 500px; width: auto; display: block; margin: 0 auto; background-color: white;">
+                                <div class="diagram-description">
+                                    <p class="mb-3"><strong>Flow Description:</strong></p>
+                                    <ul class="list-unstyled ms-4 mb-3">
+                                        <li>• User accesses application</li>
+                                        <li>• System checks authentication status</li>
+                                        <li>• Unauthenticated users are redirected to sign in</li>
+                                        <li>• After authentication, organization selection is required</li>
+                                        <li>• Organization selection grants access to protected content</li>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Key Feature 4 -->
-    <section id="feature-4" class="py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
-                        <div class="card-body">
-                            <h2 class="mb-4">Key Feature 4: Cross-Platform Compatibility</h2>
-                            
-                            <!-- Placeholder for feature 4 content -->
-                            
-                            <div class="code-snippet mt-4">
-                                <h4 class="h5 mb-3">Code Snippet</h4>
-                                <pre class="bg-light p-3 rounded-4"><code class="language-csharp">
-// Code snippet will be added later
-                                </code></pre>
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Security Features</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Session Management</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Secure session handling through Clerk</li>
+                                            <li>• Automatic session expiration</li>
+                                            <li>• Multi-device session support</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Organization Isolation</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Data isolation per organization</li>
+                                            <li>• Organization-specific access control</li>
+                                            <li>• Organization switching capability</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">API Security</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Organization-based API access</li>
+                                            <li>• Secure token handling</li>
+                                            <li>• Rate limiting support</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Public Routes</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Defined public access paths</li>
+                                            <li>• Secure public route handling</li>
+                                            <li>• Authentication bypass for specific routes</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <div class="implementation-diagram mt-4">
-                                <h4 class="h5 mb-3">Implementation Diagram</h4>
-                                <!-- Placeholder for diagram -->
-                                <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 300px;">
-                                    <p class="text-muted">Implementation Diagram for Cross-Platform Compatibility</p>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Implementation Benefits</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Security & Scalability</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Professional-grade authentication</li>
+                                            <li>• Regular security updates</li>
+                                            <li>• Built-in organization management</li>
+                                            <li>• Efficient session handling</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">User Experience & Maintenance</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Seamless authentication flow</li>
+                                            <li>• Organization switching</li>
+                                            <li>• Reduced security maintenance</li>
+                                            <li>• Automated updates</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Environment Configuration</h3>
+                                <pre class="bg-light p-3 rounded-4"><code class="language-bash"># Required environment variables
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
+CLERK_SECRET_KEY=your_secret_key</code></pre>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Error Handling</h3>
+                                <p class="mb-3">The authentication system implements comprehensive error handling:</p>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Invalid credentials</li>
+                                    <li>• Session expiration</li>
+                                    <li>• Organization access errors</li>
+                                    <li>• API authentication failures</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Testing Considerations</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Authentication Tests</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Login flow</li>
+                                            <li>• Organization selection</li>
+                                            <li>• Session management</li>
+                                            <li>• Error scenarios</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Security Tests</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Token validation</li>
+                                            <li>• Organization isolation</li>
+                                            <li>• API access control</li>
+                                            <li>• Public route access</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Future Enhancements</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Planned Features</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Role-based access control</li>
+                                            <li>• Multi-factor authentication</li>
+                                            <li>• OAuth provider integration</li>
+                                            <li>• Custom authentication flows</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Security Improvements</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Enhanced session management</li>
+                                            <li>• Advanced organization policies</li>
+                                            <li>• Audit logging</li>
+                                            <li>• Security analytics</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -211,21 +406,259 @@
                         <div class="card-body">
                             <h2 class="mb-4">Key Feature 5: Data Storage and Synchronization</h2>
                             
-                            <!-- Placeholder for feature 5 content -->
-                            
-                            <div class="code-snippet mt-4">
-                                <h4 class="h5 mb-3">Code Snippet</h4>
-                                <pre class="bg-light p-3 rounded-4"><code class="language-javascript">
-// Code snippet will be added later
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Overview</h3>
+                                <p class="mb-4">
+                                    The data storage and synchronization system implements a hybrid approach using IBM Cloud Object Storage (COS) for asset storage 
+                                    and SQLite for scene configuration data. This architecture ensures efficient storage of large assets while maintaining 
+                                    quick access to configuration data.
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Implementation</h3>
+
+                                <h4>COS Client Configuration</h4>
+                                <pre><code class="language-typescript">
+import { S3 } from 'aws-sdk';
+
+const cosClient = new S3({
+    endpoint: process.env.COS_ENDPOINT,
+    credentials: {
+        accessKeyId: process.env.COS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.COS_SECRET_ACCESS_KEY
+    },
+    region: process.env.COS_REGION
+});
+                                </code></pre>
+
+                                <h4>File Upload and URL Generation</h4>
+                                <pre><code class="language-typescript">
+async function uploadAsset(file: File, key: string): Promise<string> {
+    const params = {
+        Bucket: process.env.COS_BUCKET_NAME,
+        Key: key,
+        Body: file,
+        ContentType: file.type
+    };
+
+    await cosClient.upload(params).promise();
+    
+    return cosClient.getSignedUrl('getObject', {
+        Bucket: process.env.COS_BUCKET_NAME,
+        Key: key,
+        Expires: 3600 // URL expires in 1 hour
+    });
+}
+                                </code></pre>
+
+                                <h4>Scene Configuration Storage</h4>
+                                <pre><code class="language-typescript">
+interface SceneConfig {
+    id: string;
+    name: string;
+    assets: Array<{
+        id: string;
+        url: string;
+        type: string;
+        position: { x: number; y: number; z: number; }
+    }>;
+}
+
+async function saveSceneConfig(config: SceneConfig): Promise<void> {
+    await db.run(`
+        INSERT OR REPLACE INTO scene_configs (id, name, config)
+        VALUES (?, ?, ?)
+    `, [config.id, config.name, JSON.stringify(config)]);
+}
+                                </code></pre>
+
+                                <h4>API Handling</h4>
+                                <pre><code class="language-typescript">
+app.post('/api/scenes/:id/assets', async (req, res) => {
+    try {
+        const file = req.files.asset;
+        const sceneId = req.params.id;
+        const key = `scenes/${sceneId}/${file.name}`;
+        
+        const url = await uploadAsset(file, key);
+        const config = await getSceneConfig(sceneId);
+        
+        config.assets.push({
+            id: uuidv4(),
+            url,
+            type: file.type,
+            position: req.body.position
+        });
+        
+        await saveSceneConfig(config);
+        
+        res.json({ success: true, url });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
                                 </code></pre>
                             </div>
-                            
-                            <div class="implementation-diagram mt-4">
-                                <h4 class="h5 mb-3">Implementation Diagram</h4>
-                                <!-- Placeholder for diagram -->
-                                <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 300px;">
-                                    <p class="text-muted">Implementation Diagram for Data Storage and Synchronization</p>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Data Flow Diagram</h3>
+                                <div class="text-center my-4">
+                                    <img src="assets/images/graphs-n-schemas/data-flow-diagram.svg" alt="Data Flow Diagram" class="img-fluid" style="max-width: 800px;">
                                 </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Unity Integration</h3>
+                                
+                                <h4 class="h5 mb-3">1. Scene Configuration Access</h4>
+                                <p class="mb-3">
+                                    The Unity application accesses scene configurations through a dedicated API client that handles:
+                                </p>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">// Example Unity API call
+const response = await fetch(`/api/scenes-configuration/${sceneId}?orgId=${orgId}`);
+const config = await response.json();</code></pre>
+
+                                <h4 class="h5 mb-3">2. Asset Access</h4>
+                                <p class="mb-3">
+                                    Unity applications can access assets through public COS URLs:
+                                </p>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">// Example asset URL structure
+const assetUrl = `https://${bucketName}.s3.${region}.cloud-object-storage.appdomain.cloud/documents/${assetKey}`;</code></pre>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Security Implementation</h3>
+                                
+                                <h4 class="h5 mb-3">1. Access Control</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Organization-based access control</li>
+                                    <li>• Signed URLs for COS assets with expiration</li>
+                                    <li>• Public URLs for Unity app access</li>
+                                    <li>• Token-based authentication for API access</li>
+                                </ul>
+
+                                <h4 class="h5 mb-3">2. URL Security</h4>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">// Generate short-lived signed URL for sensitive operations
+export async function getSignedUrl(key: string, expiresIn: number = 3600): Promise&lt;string&gt; {
+  const cos = getCosClient();
+  return cos.getSignedUrl('getObject', {
+    Bucket: BUCKET_NAME,
+    Key: key,
+    Expires: expiresIn,
+  });
+}</code></pre>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Data Synchronization</h3>
+                                
+                                <h4 class="h5 mb-3">1. Real-time Updates</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Scene configurations are updated in real-time</li>
+                                    <li>• Unity apps poll for configuration updates</li>
+                                    <li>• Asset changes are immediately reflected</li>
+                                </ul>
+
+                                <h4 class="h5 mb-3">2. Conflict Resolution</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Last-write-wins strategy for scene configurations</li>
+                                    <li>• Version tracking for asset updates</li>
+                                    <li>• Atomic updates for critical operations</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Performance Optimization</h3>
+                                
+                                <h4 class="h5 mb-3">1. Caching Strategy</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• In-memory caching of frequently accessed configurations</li>
+                                    <li>• Local storage of commonly used assets</li>
+                                    <li>• CDN integration for asset delivery</li>
+                                </ul>
+
+                                <h4 class="h5 mb-3">2. Batch Operations</h4>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">// Example batch asset upload
+const uploadPromises = files.map(file => 
+  uploadDocument(file.buffer, file.name, file.mimetype)
+);
+await Promise.all(uploadPromises);</code></pre>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Error Handling</h3>
+                                
+                                <h4 class="h5 mb-3">1. Storage Errors</h4>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">try {
+  await uploadDocument(file, filename, mimeType);
+} catch (error) {
+  console.error('Error uploading to COS:', {
+    error: error instanceof Error ? {
+      message: error.message,
+      stack: error.stack,
+      name: error.name
+    } : error,
+    bucket: BUCKET_NAME,
+    filename
+  });
+  throw error;
+}</code></pre>
+
+                                <h4 class="h5 mb-3">2. Synchronization Errors</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Retry mechanisms for failed uploads</li>
+                                    <li>• Fallback options for unavailable assets</li>
+                                    <li>• Error reporting and logging</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Environment Configuration</h3>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-bash"># Required environment variables
+COS_ENDPOINT=https://s3.us-east.cloud-object-storage.appdomain.cloud
+COS_ACCESS_KEY_ID=your_access_key_id
+COS_SECRET_ACCESS_KEY=your_secret_access_key
+COS_REGION=us-east
+COS_BUCKET_NAME=your_bucket_name
+
+# Database configuration
+SQLITE_PATH=./data/scene_configs.db
+MAX_CACHE_SIZE=100MB
+ASSET_CACHE_DURATION=3600</code></pre>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Testing Considerations</h3>
+                                <ul>
+                                    <li>Storage Tests:
+                                        <ul>
+                                            <li>Asset upload/download verification</li>
+                                            <li>Configuration CRUD operations</li>
+                                            <li>URL generation and expiration</li>
+                                            <li>Error handling and retry logic</li>
+                                        </ul>
+                                    </li>
+                                    <li>Integration Tests:
+                                        <ul>
+                                            <li>Unity client integration</li>
+                                            <li>Synchronization mechanisms</li>
+                                            <li>Performance under load</li>
+                                            <li>Security implementation</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Future Enhancements</h3>
+                                <ul>
+                                    <li>Advanced caching mechanisms with predictive prefetching</li>
+                                    <li>Multi-region asset distribution</li>
+                                    <li>Real-time collaborative editing features</li>
+                                    <li>Enhanced conflict resolution strategies</li>
+                                    <li>Automated asset optimization pipeline</li>
+                                </ul>
                             </div>
                         </div>
                     </div>

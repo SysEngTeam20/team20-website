@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .participant { fill: #f8f9fa; stroke: #6c757d; stroke-width: 2; }
+        .arrow { stroke: #212529; stroke-width: 2; marker-end: url(#arrowhead); }
+        .text { font-family: Arial, sans-serif; font-size: 14px; fill: #212529; }
+        .alt-box { fill: #f8f9fa; stroke: #6c757d; stroke-width: 1; stroke-dasharray: 4; }
+    </style>
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#212529"/>
+        </marker>
+    </defs>
+    
+    <!-- Participants -->
+    <rect class="participant" x="50" y="20" width="120" height="40" rx="5"/>
+    <text class="text" x="90" y="45" text-anchor="middle">User</text>
+    
+    <rect class="participant" x="250" y="20" width="120" height="40" rx="5"/>
+    <text class="text" x="310" y="45" text-anchor="middle">App</text>
+    
+    <rect class="participant" x="450" y="20" width="120" height="40" rx="5"/>
+    <text class="text" x="510" y="45" text-anchor="middle">Clerk</text>
+    
+    <rect class="participant" x="650" y="20" width="120" height="40" rx="5"/>
+    <text class="text" x="710" y="45" text-anchor="middle">Database</text>
+    
+    <!-- Lifelines -->
+    <line x1="110" y1="60" x2="110" y2="580" stroke="#6c757d" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="310" y1="60" x2="310" y2="580" stroke="#6c757d" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="510" y1="60" x2="510" y2="580" stroke="#6c757d" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="710" y1="60" x2="710" y2="580" stroke="#6c757d" stroke-width="1" stroke-dasharray="4"/>
+    
+    <!-- Messages -->
+    <!-- Access Application -->
+    <line class="arrow" x1="110" y1="100" x2="310" y2="100"/>
+    <text class="text" x="210" y="95">Access Application</text>
+    
+    <!-- Check Authentication -->
+    <line class="arrow" x1="310" y1="140" x2="510" y2="140"/>
+    <text class="text" x="410" y="135">Check Authentication</text>
+    
+    <!-- Not Authenticated Alt Box -->
+    <rect class="alt-box" x="90" y="160" width="440" height="200"/>
+    <text class="text" x="100" y="180">[Not Authenticated]</text>
+    
+    <!-- Redirect to Sign In -->
+    <line class="arrow" x1="510" y1="200" x2="310" y2="200"/>
+    <text class="text" x="410" y="195">Redirect to Sign In</text>
+    
+    <!-- Show Sign In Page -->
+    <line class="arrow" x1="310" y1="240" x2="110" y2="240"/>
+    <text class="text" x="210" y="235">Show Sign In Page</text>
+    
+    <!-- Enter Credentials -->
+    <line class="arrow" x1="110" y1="280" x2="310" y2="280"/>
+    <text class="text" x="210" y="275">Enter Credentials</text>
+    
+    <!-- Validate Credentials -->
+    <line class="arrow" x1="310" y1="320" x2="510" y2="320"/>
+    <text class="text" x="410" y="315">Validate Credentials</text>
+    
+    <!-- Authentication Success -->
+    <line class="arrow" x1="510" y1="360" x2="310" y2="360"/>
+    <text class="text" x="410" y="355">Authentication Success</text>
+    
+    <!-- No Organization Selected Alt Box -->
+    <rect class="alt-box" x="90" y="380" width="640" height="180"/>
+    <text class="text" x="100" y="400">[No Organization Selected]</text>
+    
+    <!-- Organization Selection Flow -->
+    <line class="arrow" x1="310" y1="420" x2="110" y2="420"/>
+    <text class="text" x="210" y="415">Redirect to Organization Selection</text>
+    
+    <line class="arrow" x1="110" y1="460" x2="310" y2="460"/>
+    <text class="text" x="210" y="455">Select Organization</text>
+    
+    <line class="arrow" x1="310" y1="500" x2="510" y2="500"/>
+    <text class="text" x="410" y="495">Store Organization Selection</text>
+    
+    <!-- Database Operations -->
+    <line class="arrow" x1="310" y1="540" x2="710" y2="540"/>
+    <text class="text" x="510" y="535">Query with Organization ID</text>
+    
+    <line class="arrow" x1="710" y1="560" x2="310" y2="560" stroke-dasharray="4"/>
+    <text class="text" x="510" y="555">Return Organization Data</text>
+    
+    <line class="arrow" x1="310" y1="580" x2="110" y2="580" stroke-dasharray="4"/>
+    <text class="text" x="210" y="575">Show Protected Content</text>
+</svg> 
