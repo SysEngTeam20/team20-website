@@ -65,8 +65,187 @@
                         <div class="card-body">
                             <h2 class="mb-4">Implementation Overview</h2>
                             
-                            <!-- Placeholder for implementation overview content -->
-                            
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Architecture Overview</h3>
+                                <p class="mb-4">
+                                    The Portalt platform is implemented using a modern, scalable architecture that combines web technologies with Unity-based VR/AR capabilities. 
+                                    The system is built on a microservices architecture with clear separation of concerns between the admin dashboard, Unity applications, and backend services.
+                                </p>
+                                <p class="mb-4">
+                                    The architecture follows a layered approach, with each component handling specific responsibilities:
+                                </p>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Frontend Layer: Next.js-based admin dashboard for scene management and configuration</li>
+                                    <li>• Backend Layer: Node.js services handling data persistence and business logic</li>
+                                    <li>• Storage Layer: Hybrid storage system using SQLite for configurations and IBM Cloud Object Storage for assets</li>
+                                    <li>• Unity Layer: VR/AR applications consuming scene configurations and assets</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Technology Stack</h3>
+                                <p class="mb-4">
+                                    The platform leverages modern web technologies and cloud services to deliver a robust VR/AR experience:
+                                </p>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Frontend Technologies</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Next.js for the admin dashboard</li>
+                                            <li>• React for UI components</li>
+                                            <li>• TypeScript for type safety</li>
+                                            <li>• Tailwind CSS for styling</li>
+                                        </ul>
+                                        <p class="small text-muted mt-2">
+                                            The frontend stack is chosen for its developer experience, type safety, and component reusability.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Backend Technologies</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Node.js with Express</li>
+                                            <li>• SQLite for configuration storage</li>
+                                            <li>• IBM Cloud Object Storage for assets</li>
+                                            <li>• WebSocket for real-time updates</li>
+                                        </ul>
+                                        <p class="small text-muted mt-2">
+                                            The backend stack prioritizes performance, scalability, and real-time capabilities.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Key Implementation Features</h3>
+                                <p class="mb-4">
+                                    The platform implements several key features that work together to provide a seamless VR/AR experience:
+                                </p>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Core Features</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• VR environment creation and management</li>
+                                            <li>• Interactive 3D object placement</li>
+                                            <li>• User authentication and organization management</li>
+                                            <li>• Real-time scene synchronization</li>
+                                            <li>• Asset management and storage</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Technical Features</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Type-safe API development</li>
+                                            <li>• Secure authentication flow</li>
+                                            <li>• Efficient asset delivery</li>
+                                            <li>• Real-time data synchronization</li>
+                                            <li>• Cross-platform compatibility</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Development Approach</h3>
+                                <p class="mb-4">
+                                    The implementation follows a modular, component-based approach with emphasis on:
+                                </p>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Clean code architecture and SOLID principles</li>
+                                    <li>• Comprehensive error handling and validation</li>
+                                    <li>• Performance optimization and caching strategies</li>
+                                    <li>• Security-first development practices</li>
+                                    <li>• Automated testing and continuous integration</li>
+                                </ul>
+                                <p class="small text-muted">
+                                    This approach ensures maintainable code, reliable performance, and robust security.
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Integration Points</h3>
+                                <p class="mb-4">
+                                    The platform integrates with various services and systems to provide a complete solution:
+                                </p>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">External Services</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Clerk for authentication</li>
+                                            <li>• IBM Cloud Object Storage</li>
+                                            <li>• Unity VR/AR applications</li>
+                                            <li>• WebSocket server for real-time updates</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <h5 class="h6 fw-bold mb-2">Internal Systems</h5>
+                                        <ul class="list-unstyled ms-4">
+                                            <li>• Scene configuration management</li>
+                                            <li>• Asset processing pipeline</li>
+                                            <li>• User session management</li>
+                                            <li>• Organization-based access control</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Performance Considerations</h3>
+                                <p class="mb-4">
+                                    The implementation includes several performance optimizations to ensure smooth operation:
+                                </p>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Efficient asset loading and caching</li>
+                                    <li>• Optimized database queries</li>
+                                    <li>• Batch processing for multiple operations</li>
+                                    <li>• Progressive loading of 3D models</li>
+                                    <li>• WebSocket-based real-time updates</li>
+                                </ul>
+                                <p class="small text-muted">
+                                    These optimizations are crucial for delivering a responsive VR/AR experience.
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Security Measures</h3>
+                                <p class="mb-4">
+                                    Security is implemented at multiple levels to protect user data and assets:
+                                </p>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Secure authentication and authorization</li>
+                                    <li>• Organization-based data isolation</li>
+                                    <li>• Secure asset access control</li>
+                                    <li>• API request validation</li>
+                                    <li>• Environment-based configuration</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Testing Strategy</h3>
+                                <p class="mb-4">
+                                    The implementation includes comprehensive testing to ensure reliability:
+                                </p>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Unit tests for core functionality</li>
+                                    <li>• Integration tests for API endpoints</li>
+                                    <li>• End-to-end testing of user flows</li>
+                                    <li>• Performance testing and optimization</li>
+                                    <li>• Security testing and validation</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Future Considerations</h3>
+                                <p class="mb-4">
+                                    The implementation is designed to support future enhancements:
+                                </p>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Scalable architecture for growth</li>
+                                    <li>• Modular design for feature additions</li>
+                                    <li>• Support for additional VR/AR features</li>
+                                    <li>• Enhanced collaboration capabilities</li>
+                                    <li>• Advanced analytics and reporting</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,21 +262,274 @@
                         <div class="card-body">
                             <h2 class="mb-4">Key Feature 1: VR Environment Creation</h2>
                             
-                            <!-- Placeholder for feature 1 content -->
-                            
-                            <div class="code-snippet mt-4">
-                                <h4 class="h5 mb-3">Code Snippet</h4>
-                                <pre class="bg-light p-3 rounded-4"><code class="language-csharp">
-// Code snippet will be added later
-                                </code></pre>
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Overview</h3>
+                                <p class="mb-4">
+                                    The application implements a comprehensive VR environment creation system that allows users to create, configure, and manage 3D scenes for VR activities. 
+                                    The system supports 3D object placement, scene configuration, and real-time synchronization with Unity applications.
+                                </p>
                             </div>
-                            
-                            <div class="implementation-diagram mt-4">
-                                <h4 class="h5 mb-3">Implementation Diagram</h4>
-                                <!-- Placeholder for diagram -->
-                                <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 300px;">
-                                    <p class="text-muted">Implementation Diagram for VR Environment Creation</p>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Implementation Details</h3>
+
+                                <h4 class="h5 mb-3">1. Scene Configuration System</h4>
+                                
+                                <h5 class="h6 mb-2">1.1 Scene Data Structure</h5>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">interface SceneConfiguration {
+  _id?: string;
+  activity_id: string;
+  scene_id: string;
+  objects: SceneObject[];
+  orgId: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface SceneObject {
+  object_id: string;
+  modelUrl: string;
+  position: Vector3;
+  rotation: Vector3;
+  scale: Vector3;
+}
+
+interface Vector3 {
+  x: number;
+  y: number;
+  z: number;
+}</code></pre>
+
+                                <h5 class="h6 mb-2">1.2 Scene Editor Component</h5>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">export function SceneEditor({ activity }: SceneEditorProps) {
+  const [selectedScene, setSelectedScene] = useState&lt;string | null&gt;(null);
+  const [sceneConfigs, setSceneConfigs] = useState&lt;Record&lt;string, any&gt;&gt;({});
+  
+  // Initialize scene for VR activities
+  useEffect(() => {
+    if (activity.format === 'VR' && activity.scenes?.[0]) {
+      setSelectedScene(activity.scenes[0].id);
+      setSceneConfigs(prev => ({
+        ...prev,
+        [activity.scenes[0].id]: activity.scenes[0].config
+      }));
+    }
+  }, [activity]);
+}</code></pre>
+
+                                <h4 class="h5 mb-3">2. 3D Object Management</h4>
+                                
+                                <h5 class="h6 mb-2">2.1 Object Addition</h5>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">const handleAddArtifact = async (sceneId: string, artifact: any) => {
+  const newObject = {
+    object_id: crypto.randomUUID(),
+    modelUrl: artifact.modelUrl,
+    position: { x: 0, y: 0, z: 0 },
+    rotation: { x: 0, y: 0, z: 0 },
+    scale: { x: 1, y: 1, z: 1 }
+  };
+
+  const currentConfig = sceneConfigs[sceneId] || { objects: [] };
+  const currentObjects = Array.isArray(currentConfig.objects) ? currentConfig.objects : [];
+
+  await fetch(`/api/scenes-configuration/${sceneId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      objects: [...currentObjects, newObject]
+    })
+  });
+};</code></pre>
+
+                                <h5 class="h6 mb-2">2.2 Object Transformation</h5>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">const handleUpdateArtifact = async (sceneId: string, objectId: string, updated: any) => {
+  const updatedObjects = sceneConfigs[sceneId]?.objects?.map((obj: { object_id: string; }) => 
+    obj.object_id === objectId ? { ...obj, ...updated } : obj
+  ) || [];
+
+  await fetch(`/api/scenes-configuration/${sceneId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      objects: updatedObjects
+    })
+  });
+};</code></pre>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Scene Creation Flow</h3>
+                                <div class="text-center my-4">
+                                    <img src="assets/images/graphs-n-schemas/scene-creation-flow.svg" alt="Scene Creation Flow Diagram" class="img-fluid" style="max-width: 800px;">
                                 </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Unity Integration</h3>
+                                
+                                <h4 class="h5 mb-3">1. Scene Configuration Access</h4>
+                                <p class="mb-3">
+                                    Unity applications can access scene configurations through public API endpoints:
+                                </p>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">// Example Unity API call
+const response = await fetch(`/api/scenes-configuration/${sceneId}?orgId=${orgId}`);
+const config = await response.json();</code></pre>
+
+                                <h4 class="h5 mb-3">2. 3D Model Access</h4>
+                                <p class="mb-3">
+                                    Unity applications can access 3D models through public COS URLs:
+                                </p>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">// Example model URL structure
+const modelUrl = `https://${bucketName}.s3.${region}.cloud-object-storage.appdomain.cloud/documents/${modelKey}`;</code></pre>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Scene Editor Features</h3>
+                                
+                                <h4 class="h5 mb-3">1. Object Manipulation</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Position adjustment (x, y, z coordinates)</li>
+                                    <li>• Rotation control (x, y, z angles)</li>
+                                    <li>• Scale modification (x, y, z dimensions)</li>
+                                    <li>• Real-time preview</li>
+                                </ul>
+
+                                <h4 class="h5 mb-3">2. Asset Management</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• 3D model upload</li>
+                                    <li>• Asset library integration</li>
+                                    <li>• Model format validation</li>
+                                    <li>• Automatic asset categorization</li>
+                                </ul>
+
+                                <h4 class="h5 mb-3">3. Scene Organization</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Multiple scene support</li>
+                                    <li>• Scene naming and ordering</li>
+                                    <li>• Scene duplication</li>
+                                    <li>• Scene deletion</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Data Synchronization</h3>
+                                
+                                <h4 class="h5 mb-3">1. Real-time Updates</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Scene configuration changes</li>
+                                    <li>• Object transformations</li>
+                                    <li>• Asset updates</li>
+                                    <li>• Unity app synchronization</li>
+                                </ul>
+
+                                <h4 class="h5 mb-3">2. Version Control</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Scene version tracking</li>
+                                    <li>• Change history</li>
+                                    <li>• Rollback capability</li>
+                                    <li>• Conflict resolution</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Security Implementation</h3>
+                                
+                                <h4 class="h5 mb-3">1. Access Control</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Organization-based access</li>
+                                    <li>• Scene-level permissions</li>
+                                    <li>• Asset access control</li>
+                                    <li>• API authentication</li>
+                                </ul>
+
+                                <h4 class="h5 mb-3">2. Data Validation</h4>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">// Example validation
+if (!format || !["AR", "VR"].includes(format)) {
+  return res.status(400).json({ message: "Valid format (AR/VR) is required" });
+}</code></pre>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Performance Optimization</h3>
+                                
+                                <h4 class="h5 mb-3">1. Asset Loading</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Progressive loading</li>
+                                    <li>• Asset caching</li>
+                                    <li>• Lazy loading</li>
+                                    <li>• Format optimization</li>
+                                </ul>
+
+                                <h4 class="h5 mb-3">2. Scene Management</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Efficient scene switching</li>
+                                    <li>• Memory management</li>
+                                    <li>• Resource cleanup</li>
+                                    <li>• Batch operations</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Error Handling</h3>
+                                
+                                <h4 class="h5 mb-3">1. Validation Errors</h4>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-typescript">try {
+  const parseResult = ActivitySchema.safeParse(newActivity);
+  if (!parseResult.success) {
+    return res.status(400).json({ errors: parseResult.error.format() });
+  }
+} catch (error) {
+  console.error("[ACTIVITIES_POST]", error);
+  return res.status(500).json({ message: "Internal Error" });
+}</code></pre>
+
+                                <h4 class="h5 mb-3">2. Asset Errors</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• File format validation</li>
+                                    <li>• Upload error handling</li>
+                                    <li>• URL validation</li>
+                                    <li>• Access error recovery</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Testing Considerations</h3>
+                                
+                                <h4 class="h5 mb-3">1. Scene Editor Tests</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Object manipulation</li>
+                                    <li>• Scene configuration</li>
+                                    <li>• Asset management</li>
+                                    <li>• Error handling</li>
+                                </ul>
+
+                                <h4 class="h5 mb-3">2. Integration Tests</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Unity app integration</li>
+                                    <li>• API endpoints</li>
+                                    <li>• Data synchronization</li>
+                                    <li>• Performance metrics</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Future Enhancements</h3>
+                                
+                                <h4 class="h5 mb-3">1. Planned Features</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Advanced object manipulation</li>
+                                    <li>• Scene templates</li>
+                                    <li>• Collaborative editing</li>
+                                    <li>• Real-time preview</li>
+                                </ul>
+
+                                <h4 class="h5 mb-3">2. Performance Improvements</h4>
+                                <ul class="list-unstyled ms-4 mb-4">
+                                    <li>• Asset optimization</li>
+                                    <li>• Scene loading optimization</li>
+                                    <li>• Memory management</li>
+                                    <li>• Network efficiency</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
