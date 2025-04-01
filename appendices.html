@@ -241,11 +241,9 @@
 
                                                 <div class="mb-4">
                                                     <h5>2. Entering Codes in the Viewer</h5>
-                                                    <p>Enter both codes in the viewer scenes to access your created environment:</p>
-                                                    <ul>
-                                                        <li>Activity Join Code</li>
-                                                        <li>Pair Code</li>
-                                                    </ul>
+                                                    <p>Enter the pair code when configuring the activity in the admin editor scene</p>
+                                                    <p>Enter the activity join code when joining an activity in the viewer scene</p>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -255,9 +253,166 @@
                             
                             <div class="mb-5">
                                 <h3 class="h4 mb-3">End User Guide</h3>
-                                <!-- Placeholder for end user guide content -->
+                                <!-- Viewer Scene Guide Content -->
+                                <div class="accordion" id="viewerSceneAccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#viewerScene">
+                                                Viewer Scene
+                                            </button>
+                                        </h2>
+                                        <div id="viewerScene" class="accordion-collapse collapse show" data-bs-parent="#viewerSceneAccordion">
+                                            <div class="accordion-body">
+                                                <div class="mb-4">
+                                                    <h5>1. Connecting to an Activity</h5>
+                                                    <p>When you launch the Viewer Scene, you'll be prompted to enter connection details:</p>
+                                                    <ul>
+                                                        <li><strong>IP Address and Port</strong>: Enter the IP address and port provided by your administrator. It's important to use only the IP suggested in the admin dashboard.</li>
+                                                        <li><strong>Activity Join Code</strong>: Enter the activity join code provided by your administrator.</li>
+                                                    </ul>
+                                                    <div class="text-center mb-3">
+                                                        <img src="assets/images/user-guide/viewer-scene/first-screenshot-of-user-config-menu-enter-ip-port-activity-code.jpg" alt="Configuration Menu" class="img-fluid rounded shadow-sm" style="max-width: 80%;">
+                                                    </div>
+                                                    
+                                                    <div class="alert alert-warning">
+                                                        <i class="fas fa-exclamation-triangle me-2"></i> <strong>Important:</strong> Always use the IP address and port displayed in the admin dashboard, as shown below:
+                                                    </div>
+                                                    
+                                                    <div class="text-center mb-3">
+                                                        <img src="assets/images/user-guide/viewer-scene/ip-and-port-shown-in-dashboard.jpg" alt="IP and Port in Dashboard" class="img-fluid rounded shadow-sm" style="max-width: 80%;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <h5>2. Loading the Scene</h5>
+                                                    <p>After entering the correct connection details, the scene will dynamically pair with the administrator's created activity and load all assets that were placed in the environment.</p>
+                                                    <div class="text-center mb-3">
+                                                        <img src="assets/images/user-guide/viewer-scene/scene-dynamically-pairs-and-loads.jpg" alt="Scene Loading" class="img-fluid rounded shadow-sm" style="max-width: 80%;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <h5>3. Interacting in the Environment</h5>
+                                                    <p>Once in the environment, you can:</p>
+                                                    <ul>
+                                                        <li><strong>Interact with the RAG Chatbot</strong>: Ask questions about the environment and content through voice commands. The AI guide will respond based on the documents uploaded by the administrator.</li>
+                                                        <li><strong>Communicate with Other Users</strong>: Interact with other people who have joined the same room through voice chat.</li>
+                                                        <li><strong>Use Gestures</strong>: Communicate non-verbally using hand gestures and movements.</li>
+                                                        <li><strong>Explore</strong>: Move around the environment and examine the objects placed by the administrator.</li>
+                                                    </ul>
+                                                    <div class="text-center mb-3">
+                                                        <img src="assets/images/user-guide/viewer-scene/interaction-between-user-and-chatbot-through-voice.jpg" alt="Chatbot Interaction" class="img-fluid rounded shadow-sm" style="max-width: 80%;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <h5>4. Best Practices</h5>
+                                                    <ul>
+                                                        <li>Ensure your microphone is properly configured for voice interaction.</li>
+                                                        <li>Stay within recommended boundaries of the virtual environment.</li>
+                                                        <li>Follow any specific instructions provided by the activity administrator.</li>
+                                                        <li>For best performance, use a stable internet connection.</li>
+                                                        <li>Report any technical issues to the administrator.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             
+                            <div class="mb-5">
+                                <h3 class="h4 mb-3">Editor Scene Setup</h3>
+                                <div class="accordion" id="editorSceneAccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#editorScene">
+                                                Editor Scene
+                                            </button>
+                                        </h2>
+                                        <div id="editorScene" class="accordion-collapse collapse show" data-bs-parent="#editorSceneAccordion">
+                                            <div class="accordion-body">
+                                                <div class="mb-4">
+                                                    <h5>1. Launching the Editor</h5>
+                                                    <p>The Editor Scene is accessible on PC. Locate and run the Editor executable file to begin.</p>
+                                                    <div class="text-center mb-3">
+                                                        <img src="assets/images/user-guide/editor-scene/editor-exe-icon.jpg" alt="Editor Executable Icon" class="img-fluid rounded shadow-sm" style="max-width: 80%;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <h5>2. Loading Screen</h5>
+                                                    <p>When you first launch the editor, you'll be presented with the loading screen.</p>
+                                                    <div class="text-center mb-3">
+                                                        <img src="assets/images/user-guide/editor-scene/editor-scene-loading-page.jpg" alt="Editor Loading Screen" class="img-fluid rounded shadow-sm" style="max-width: 80%;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <h5>3. Help Menu</h5>
+                                                    <p>Click on the Help button in the GUI to access navigation and interaction controls.</p>
+                                                    <div class="text-center mb-3">
+                                                        <img src="assets/images/user-guide/editor-scene/editor-scene-ui-with-arrow-to-help-button.jpg" alt="Help Button Location" class="img-fluid rounded shadow-sm" style="max-width: 80%;">
+                                                    </div>
+                                                    
+                                                    <p>The Help Menu provides instructions on how to navigate and interact with objects in the environment:</p>
+                                                    <div class="text-center mb-3">
+                                                        <img src="assets/images/user-guide/editor-scene/help-menu-after-pressing-help-button.jpg" alt="Help Menu" class="img-fluid rounded shadow-sm" style="max-width: 80%;">
+                                                    </div>
+                                                    
+                                                    <div class="mt-3">
+                                                        <h6>Basic Controls:</h6>
+                                                        <ul>
+                                                            <li><strong>Movement</strong>: WASD keys to move forward, backward, and side-to-side</li>
+                                                            <li><strong>Look around</strong>: Move the mouse to change your view direction</li>
+                                                            <li><strong>Select objects</strong>: Left-click on an object to select it</li>
+                                                            <li><strong>Place objects</strong>: Select an object from the menu and click to place</li>
+                                                            <li><strong>Scale objects</strong>: Hold Shift + mouse wheel to increase or decrease size</li>
+                                                            <li><strong>Rotate objects</strong>: Hold R + mouse movement to rotate selected objects</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <h5>4. Connecting to Your Activity</h5>
+                                                    <p>To load your assets from the Portalt dashboard:</p>
+                                                    <ol>
+                                                        <li>Enter the pairing code generated from your activity on the Portalt dashboard</li>
+                                                        <li>Press the Connect button</li>
+                                                    </ol>
+                                                    <div class="text-center mb-3">
+                                                        <img src="assets/images/user-guide/editor-scene/add-pairing-code-for-cloud-connection.jpg" alt="Pairing Code Entry" class="img-fluid rounded shadow-sm" style="max-width: 80%;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <h5>5. Working with Objects</h5>
+                                                    <p>After connecting, your assets will be dynamically loaded from the dashboard activity.</p>
+                                                    <div class="text-center mb-3">
+                                                        <img src="assets/images/user-guide/editor-scene/object-being-dynamically-loaded-from-dashboard.jpg" alt="Dynamic Objects Loading" class="img-fluid rounded shadow-sm" style="max-width: 80%;">
+                                                    </div>
+                                                    
+                                                    <div class="mt-3">
+                                                        <p>You can now:</p>
+                                                        <ul>
+                                                            <li>Select objects by clicking on them</li>
+                                                            <li>Place objects by selecting them and clicking where you want them</li>
+                                                            <li>Adjust their position by dragging</li>
+                                                            <li>Scale objects using Shift + mouse wheel</li>
+                                                            <li>Rotate objects using R + mouse movement</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <h5>6. Saving Your Scene</h5>
+                                                    <p>Once you've arranged your objects as desired, press the Save button in the GUI bar to save your scene configuration. This will update your activity on the Portalt dashboard with the current layout.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     
                         </div>
                     </div>
@@ -752,28 +907,118 @@ docker tag ubiq-genie:latest us.icr.io/portalt/ubiq-genie:latest</code></pre>
                 <div class="col-lg-10">
                     <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
                         <div class="card-body">
-                            <h2 class="mb-4">Monthly Video</h2>
+                            <h2 class="mb-4">Monthly Videos</h2>
                             
-                            <div class="mb-5">
-                                <h3 class="h4 mb-3">March 2025</h3>
-                                <!-- Placeholder for March 2025 video content -->
-                            </div>
+                            <div class="accordion" id="monthlyVideoAccordion">
                             
-                            <div class="mb-5">
-                                <h3 class="h4 mb-3">February 2025</h3>
-                                <!-- Placeholder for February 2025 video content -->
-                            </div>
-                            
-                            <div class="mb-5">
-                                <h3 class="h4 mb-3">January 2025</h3>
-                                <!-- Placeholder for January 2025 video content -->
+                                
+                                <!-- February 2025 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#februaryVideo">
+                                            February 2025
+                                        </button>
+                                    </h2>
+                                    <div id="februaryVideo" class="accordion-collapse collapse" data-bs-parent="#monthlyVideoAccordion">
+                                        <div class="accordion-body">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="https://www.youtube.com/embed/0a2sozT2_Gs?si=S86Ga8pGzyiehdA4" title="February 2025 Update" allowfullscreen></iframe>
+                                            </div>
+                                            <div class="mt-3">
+                                                <h5>February / March 2025 Update</h5>
+                                                <p>In this update, we show the integration of the RAG system with the VR environment and demonstrate multi-user interactions.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- January 2025 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#januaryVideo">
+                                            January 2025
+                                        </button>
+                                    </h2>
+                                    <div id="januaryVideo" class="accordion-collapse collapse" data-bs-parent="#monthlyVideoAccordion">
+                                        <div class="accordion-body">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="https://www.youtube.com/embed/Lu6qRQkK4VY?si=1pEAuE-jTuIX7VCu" title="January 2025 Update" allowfullscreen></iframe>
+                                            </div>
+                                            <div class="mt-3">
+                                                <h5>January 2025 Update</h5>
+                                                <p>This update covers our progress on developing the admin dashboard interface and the VR scene editing capabilities.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- December 2024 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#decemberVideo">
+                                            December 2024
+                                        </button>
+                                    </h2>
+                                    <div id="decemberVideo" class="accordion-collapse collapse" data-bs-parent="#monthlyVideoAccordion">
+                                        <div class="accordion-body">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="https://www.youtube.com/embed/d16lqy-bJBk?si=DWL-HpOwROmqMtQb" title="December 2024 Update" allowfullscreen></iframe>
+                                            </div>
+                                            <div class="mt-3">
+                                                <h5>December 2024 Update</h5>
+                                                <p>In this update, we demonstrate our initial VR environment prototypes and discuss the architecture of our RAG-enabled AI guide system.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- November 2024 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#novemberVideo">
+                                            November 2024
+                                        </button>
+                                    </h2>
+                                    <div id="novemberVideo" class="accordion-collapse collapse" data-bs-parent="#monthlyVideoAccordion">
+                                        <div class="accordion-body">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="https://www.youtube.com/embed/pzUTQ-Gh8Uc?si=Pdbja7sGkESQuSaY" title="November 2024 Update" allowfullscreen></iframe>
+                                            </div>
+                                            <div class="mt-3">
+                                                <h5>November 2024 Update</h5>
+                                                <p>This update shows our progress on the system design, initial technology stack decisions, and early prototypes of the admin dashboard.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- October 2024 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#octoberVideo">
+                                            October 2024
+                                        </button>
+                                    </h2>
+                                    <div id="octoberVideo" class="accordion-collapse collapse" data-bs-parent="#monthlyVideoAccordion">
+                                        <div class="accordion-body">
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="https://www.youtube.com/embed/iN5zW5potLQ?si=KNMwmomspaXMtv8r" title="October 2024 Update" allowfullscreen></iframe>
+                                            </div>
+                                            <div class="mt-3">
+                                                <h5>October 2024 Update</h5>
+                                                <p>Our first monthly update covering project introduction, team structure, initial requirements gathering, and research direction.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="footer py-5 bg-dark text-white">
