@@ -916,225 +916,217 @@
                         <div class="card-body">
                             <h2 class="mb-4">MoSCoW Requirements</h2>
                             
-                            <h4 class="mb-4">Functional Requirements</h4>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
+                            <h3 class="h4 mb-3">Functional Requirements</h3>
+            
+                            <div class="table-responsive mb-5">
+                                <table class="table table-hover border">
                                     <thead class="table-light">
                                         <tr>
-                                            <th width="15%">Priority</th>
-                                            <th width="15%">ID</th>
-                                            <th>Requirement</th>
+                                            <th style="width: 15%">Priority</th>
+                                            <th style="width: 10%">ID</th>
+                                            <th style="width: 15%">Category</th>
+                                            <th style="width: 60%">Requirement</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <!-- Must Have -->
                                         <tr>
-                                            <td rowspan="7" class="align-middle bg-danger text-white">Must Have</td>
+                                            <td class="bg-danger text-white">Must Have</td>
                                             <td>F1</td>
-                                            <td>The system must provide an intuitive interface for administrators to create and manage VR scenes.</td>
+                                            <td>Admin Interface</td>
+                                            <td>Web-based admin dashboard for creating and managing virtual activities</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-danger text-white">Must Have</td>
                                             <td>F2</td>
-                                            <td>The system must allow administrators to select from preset environments or import custom environments to recreate physical spaces.</td>
+                                            <td>User Management</td>
+                                            <td>Organization management system with multiple user accounts</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-danger text-white">Must Have</td>
                                             <td>F3</td>
-                                            <td>The system must enable viewing experiences on both VR headsets and PC platforms.</td>
+                                            <td>VR Experience</td>
+                                            <td>VR viewer application for end users to experience created content</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-danger text-white">Must Have</td>
                                             <td>F4</td>
-                                            <td>The system must support real-time communication between users in the same virtual environment.</td>
+                                            <td>Content Creation</td>
+                                            <td>Support for 3D object placement and manipulation in virtual environments</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-danger text-white">Must Have</td>
                                             <td>F5</td>
-                                            <td>The system must include an AI chatbot that can provide voice responses to user queries.</td>
+                                            <td>AI Integration</td>
+                                            <td>RAG-enabled AI guide that responds to user voice queries</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-danger text-white">Must Have</td>
                                             <td>F6</td>
-                                            <td>The system must allow navigation within the VR environment using VR controllers or keyboard inputs (when using PC).</td>
+                                            <td>Content Management</td>
+                                            <td>Document upload system for creating AI knowledge base</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-danger text-white">Must Have</td>
                                             <td>F7</td>
-                                            <td>The system must include a library of preset 3D objects for administrators to select from.</td>
+                                            <td>Collaboration</td>
+                                            <td>Real-time voice interaction between users in the same virtual space</td>
                                         </tr>
                                         
                                         <!-- Should Have -->
                                         <tr>
-                                            <td rowspan="5" class="align-middle bg-warning text-dark">Should Have</td>
+                                            <td class="bg-warning">Should Have</td>
                                             <td>F8</td>
-                                            <td>The system should support multiplayer functionality allowing multiple users to interact within the same virtual space.</td>
+                                            <td>Content Creation</td>
+                                            <td>PC-based scene editor for precise object placement and manipulation</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-warning">Should Have</td>
                                             <td>F9</td>
-                                            <td>The system should allow administrators to upload and use custom 3D objects.</td>
+                                            <td>Security</td>
+                                            <td>Activity join codes for secure access to virtual environments</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-warning">Should Have</td>
                                             <td>F10</td>
-                                            <td>The system should dynamically load 3D objects into the executable without requiring code changes.</td>
+                                            <td>Content Creation</td>
+                                            <td>Support for multiple file formats for 3D models</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-warning">Should Have</td>
                                             <td>F11</td>
-                                            <td>The system should provide analytics on user engagement and interaction patterns.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>F12</td>
-                                            <td>The system should enable customization of AI chatbot parameters and reference materials.</td>
+                                            <td>Integration</td>
+                                            <td>Pairing system between admin dashboard and VR applications</td>
                                         </tr>
                                         
                                         <!-- Could Have -->
                                         <tr>
-                                            <td rowspan="4" class="align-middle bg-success text-white">Could Have</td>
+                                            <td class="bg-success text-white">Could Have</td>
+                                            <td>F12</td>
+                                            <td>Content Creation</td>
+                                            <td>Customizable virtual environment templates</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bg-success text-white">Could Have</td>
                                             <td>F13</td>
-                                            <td>The system could provide voice command chat functionality to hear other users in room live.</td>
+                                            <td>Analytics</td>
+                                            <td>User analytics and activity metrics for administrators</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-success text-white">Could Have</td>
                                             <td>F14</td>
-                                            <td>The system could include interactive elements like quizzes or guided tours.</td>
+                                            <td>Accessibility</td>
+                                            <td>Non-VR access for desktop users</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-success text-white">Could Have</td>
                                             <td>F15</td>
-                                            <td>The system could allow for real-time editing of environments while users are present.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>F16</td>
-                                            <td>The system could provide templates for different types of virtual spaces (classroom, exhibition hall, etc.).</td>
+                                            <td>Interaction</td>
+                                            <td>Hand gesture recognition for non-verbal communication</td>
                                         </tr>
                                         
                                         <!-- Won't Have -->
                                         <tr>
-                                            <td rowspan="3" class="align-middle bg-secondary text-white">Won't Have</td>
+                                            <td class="bg-secondary text-white">Won't Have</td>
+                                            <td>F16</td>
+                                            <td>AR Features</td>
+                                            <td>AR passthrough capabilities (deferred to future version)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bg-secondary text-white">Won't Have</td>
                                             <td>F17</td>
-                                            <td>The system won't have built-in 3D modeling capabilities.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>F18</td>
-                                            <td>The system won't support direct integration with enterprise management systems in the initial release.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>F19</td>
-                                            <td>The system won't have AR/VR authoring capabilities within the VR environment itself.</td>
+                                            <td>AI Generation</td>
+                                            <td>AI-generated 3D models from text or image inputs</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
 
-                            <h4 class="mt-5 mb-4">Non-Functional Requirements</h4>
+                            <h3 class="h4 mb-3">Non-Functional Requirements</h3>
+
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-hover border">
                                     <thead class="table-light">
                                         <tr>
-                                            <th width="15%">Priority</th>
-                                            <th width="15%">ID</th>
-                                            <th width="20%">Category</th>
-                                            <th>Requirement</th>
+                                            <th style="width: 15%">Priority</th>
+                                            <th style="width: 10%">ID</th>
+                                            <th style="width: 15%">Category</th>
+                                            <th style="width: 60%">Requirement</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <!-- Must Have -->
                                         <tr>
-                                            <td rowspan="7" class="align-middle bg-danger text-white">Must Have</td>
+                                            <td class="bg-danger text-white">Must Have</td>
                                             <td>NF1</td>
-                                            <td>Usability</td>
-                                            <td>The admin interface must be intuitive enough to be used with minimal training.</td>
+                                            <td>Security</td>
+                                            <td>Secure authentication and authorization system</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-danger text-white">Must Have</td>
                                             <td>NF2</td>
-                                            <td>Performance</td>
-                                            <td>The VR environment must maintain a minimum of 72 FPS on supported VR headsets to prevent motion sickness.</td>
+                                            <td>Usability</td>
+                                            <td>Responsive design for admin dashboard on mobile and desktop devices</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-danger text-white">Must Have</td>
                                             <td>NF3</td>
                                             <td>Compatibility</td>
-                                            <td>The admin dashboard must be usable on Windows, macOS, and Linux operating systems.</td>
+                                            <td>Support for major VR headsets (Oculus Quest, HTC Vive, Valve Index)</td>
                                         </tr>
                                         <tr>
+                                            <td class="bg-danger text-white">Must Have</td>
                                             <td>NF4</td>
-                                            <td>Compatibility</td>
-                                            <td>The viewer application must be compatible with major VR headsets (Meta Quest, HTC Vive) and standard PCs.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NF5</td>
-                                            <td>Reliability</td>
-                                            <td>The system must operate without crashes for at least 2 hours of continuous use.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NF6</td>
-                                            <td>Security</td>
-                                            <td>The system must implement user authentication for administrative access.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NF7</td>
-                                            <td>Portability</td>
-                                            <td>The system must allow scene creation without requiring users to modify source code.</td>
+                                            <td>Performance</td>
+                                            <td>Low-latency voice communication (< 200ms delay)</td>
                                         </tr>
                                         
                                         <!-- Should Have -->
                                         <tr>
-                                            <td rowspan="5" class="align-middle bg-warning text-dark">Should Have</td>
-                                            <td>NF8</td>
-                                            <td>Scalability</td>
-                                            <td>The system should support at least 10 concurrent users in a single multiplayer room without performance degradation.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NF9</td>
+                                            <td class="bg-warning">Should Have</td>
+                                            <td>NF5</td>
                                             <td>Performance</td>
-                                            <td>The system should load 3D objects within 3 seconds when entering a new environment.</td>
+                                            <td>Efficient 3D asset loading and optimization</td>
                                         </tr>
                                         <tr>
-                                            <td>NF10</td>
-                                            <td>Usability</td>
-                                            <td>The system should provide visual feedback for all user interactions within 200ms.</td>
+                                            <td class="bg-warning">Should Have</td>
+                                            <td>NF6</td>
+                                            <td>Compatibility</td>
+                                            <td>Cross-browser compatibility for admin dashboard</td>
                                         </tr>
                                         <tr>
-                                            <td>NF11</td>
+                                            <td class="bg-warning">Should Have</td>
+                                            <td>NF7</td>
                                             <td>Accessibility</td>
-                                            <td>The system should include subtitles for AI voice responses and high-contrast visual options.</td>
+                                            <td>User interface accessibility features</td>
                                         </tr>
                                         <tr>
-                                            <td>NF12</td>
-                                            <td>Maintainability</td>
-                                            <td>The system should use a modular architecture to facilitate future updates and extensions.</td>
+                                            <td class="bg-warning">Should Have</td>
+                                            <td>NF8</td>
+                                            <td>Reliability</td>
+                                            <td>Data backup and recovery mechanisms</td>
                                         </tr>
                                         
                                         <!-- Could Have -->
                                         <tr>
-                                            <td rowspan="4" class="align-middle bg-success text-white">Could Have</td>
-                                            <td>NF13</td>
-                                            <td>Localization</td>
-                                            <td>The system could support multiple languages for both UI and AI interactions.</td>
+                                            <td class="bg-success text-white">Could Have</td>
+                                            <td>NF9</td>
+                                            <td>Reliability</td>
+                                            <td>Offline mode for previously loaded environments</td>
                                         </tr>
                                         <tr>
-                                            <td>NF14</td>
+                                            <td class="bg-success text-white">Could Have</td>
+                                            <td>NF10</td>
                                             <td>Performance</td>
-                                            <td>The system could optimize memory usage to support environments with 50+ detailed 3D objects.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NF15</td>
-                                            <td>Scalability</td>
-                                            <td>The system could support scaling to 30+ concurrent users in a single virtual space.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NF16</td>
-                                            <td>Interoperability</td>
-                                            <td>The system could provide an API for third-party integrations and extensions.</td>
+                                            <td>Performance optimization for low-end devices</td>
                                         </tr>
                                         
                                         <!-- Won't Have -->
                                         <tr>
-                                            <td rowspan="3" class="align-middle bg-secondary text-white">Won't Have</td>
-                                            <td>NF17</td>
-                                            <td>Compatibility</td>
-                                            <td>The system won't support obsolete VR hardware (pre-2018 models) or mobile VR platforms in the initial release.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NF18</td>
-                                            <td>Performance</td>
-                                            <td>The system won't support photorealistic rendering with real-time ray tracing in the initial release.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NF19</td>
-                                            <td>Security</td>
-                                            <td>The system won't implement enterprise-grade security features like SSO or compliance with financial industry regulations.</td>
+                                            <td class="bg-secondary text-white">Won't Have</td>
+                                            <td>NF11</td>
+                                            <td>Accessibility</td>
+                                            <td>Full native mobile application for admin dashboard</td>
                                         </tr>
                                     </tbody>
                                 </table>
