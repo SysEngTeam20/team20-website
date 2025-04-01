@@ -547,21 +547,286 @@ if (!format || !["AR", "VR"].includes(format)) {
                         <div class="card-body">
                             <h2 class="mb-4">Key Feature 2: Interactive Object Placement</h2>
                             
-                            <!-- Placeholder for feature 2 content -->
-                            
-                            <div class="code-snippet mt-4">
-                                <h4 class="h5 mb-3">Code Snippet</h4>
-                                <pre class="bg-light p-3 rounded-4"><code class="language-csharp">
-// Code snippet will be added later
-                                </code></pre>
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Overview</h3>
+                                <p class="mb-4">
+                                    The platform provides an intuitive system for placing and manipulating 3D objects within the VR/AR scenes directly from the Unity Admin Scene. 
+                                    This feature, often referred to as the "Tractor Beam Mode," allows administrators to select, move, rotate, and scale objects using mouse and keyboard controls.
+                                </p>
                             </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Implementation Details</h3>
+                                <p class="mb-3">
+                                    The interactive placement system is primarily managed by a set of scripts within the `Assets/Custom/Custom Scripts/` folder in the Unity project. The `AdminController.cs` script orchestrates the switching between UI interaction and object manipulation mode.
+                                </p>
+
+                                <h4 class="h5 mb-3">1. Mode Switching (`AdminController.cs`)</h4>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                    <li>• Toggles between "UI Mode" and "Tractor Beam Mode" using the <kbd>Tab</kbd> key.</li>
+                                    <li>• In UI Mode, the mouse cursor is visible for UI interaction, and object manipulation scripts are disabled.</li>
+                                    <li>• In Tractor Beam Mode, the mouse cursor is locked, standard first-person controls are active, and object manipulation scripts are enabled.</li>
+                                </ul>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-csharp">// Simplified logic from AdminController.cs
+public class AdminController : MonoBehaviour
+{
+    public KeyCode toggleModeKey = KeyCode.Tab;
+    private bool isInUIMode = false;
+    public AdminObjectSelector objectSelector;
+    // ... other references ...
+
+    void Update()
+    {
+        if (Input.GetKeyDown(toggleModeKey))
+        {
+            ToggleMode();
+        }
+        // ... handle movement/camera if not in UI mode ...
+    }
+
+    void ToggleMode()
+    {
+        isInUIMode = !isInUIMode;
+        UpdateCursorState(); // Locks/unlocks cursor, enables/disables components
+    }
+
+    void UpdateCursorState()
+    {
+        Cursor.lockState = isInUIMode ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = isInUIMode;
+        if (objectSelector != null) objectSelector.enabled = !isInUIMode;
+        // Enable/Disable Mover, Rotator, Scaler components...
+    }
+}</code></pre>
+
+                                <h4 class="h5 mb-3">2. Object Selection (`AdminObjectSelector.cs`)</h4>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                    <li>• Casts a ray from the camera based on mouse position in Tractor Beam Mode.</li>
+                                    <li>• Detects objects on the designated "Selectable" layer.</li>
+                                    <li>• Selects an object with a <kbd>Left Mouse Click</kbd>. Clicking again or clicking empty space deselects.</li>
+                                    <li>• Highlights the selected object by changing its color.</li>
+                                    <li>• Displays a `LineRenderer` as a "tractor beam" from the camera to the selected/hovered object.</li>
+                                </ul>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-csharp">// Simplified logic from AdminObjectSelector.cs
+public class AdminObjectSelector : MonoBehaviour
+{
+    public Camera adminCamera;
+    public LayerMask objectLayer;
+    public LineRenderer tractorBeam;
+    // ... color settings ...
+    private GameObject selectedObject;
+
+    void Update()
+    {
+        UpdateTractorBeam(); // Visualize beam
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Raycast logic...
+            if (Physics.Raycast(..., out RaycastHit hit, ..., objectLayer))
+            {
+                // Selection logic (select, deselect, switch)
+                // Change object color
+            }
+            else 
+            {
+                // Deselect if clicking empty space
+            }
+        }
+    }
+    // ... UpdateTractorBeam visualization logic ...
+    public GameObject GetSelectedObject() { return selectedObject; }
+}</code></pre>
+
+                                <h4 class="h5 mb-3">3. Interaction Modes (`AdminModeController.cs`)</h4>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                    <li>• Manages the current manipulation mode: `Move`, `Scale`, or `Rotate`.</li>
+                                    <li>• Cycles through modes using the <kbd>Shift</kbd> key.</li>
+                                    <li>• When in `Rotate` mode, manages the current rotation axis (`X`, `Y`, `Z`).</li>
+                                    <li>• Cycles through rotation axes using the <kbd>R</kbd> key.</li>
+                                </ul>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-csharp">// Logic from AdminModeController.cs
+public class AdminModeController : MonoBehaviour
+{
+    public enum Mode { Move, Scale, Rotate }
+    public static Mode CurrentMode = Mode.Move;
+    public enum RotationAxis { X, Y, Z }
+    public static RotationAxis CurrentRotationAxis = RotationAxis.Y;
+
+    void Update()
+    {
+        // Cycle Mode with Shift key
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) { /* Cycle Mode */ }
+
+        // Cycle Rotation Axis with R key (only in Rotate mode)
+        if (CurrentMode == Mode.Rotate && Input.GetKeyDown(KeyCode.R)) { /* Cycle Axis */ }
+    }
+}</code></pre>
                             
-                            <div class="implementation-diagram mt-4">
-                                <h4 class="h5 mb-3">Implementation Diagram</h4>
-                                <!-- Placeholder for diagram -->
-                                <div class="image-placeholder bg-light rounded-4 d-flex align-items-center justify-content-center" style="height: 300px;">
-                                    <p class="text-muted">Implementation Diagram for Interactive Object Placement</p>
-                                </div>
+                                <h4 class="h5 mb-3">4. Object Manipulation (Mover, Rotator, Scaler)</h4>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                    <li>• **`AdminObjectMover.cs`**: In `Move` mode, smoothly moves the selected object towards a point in front of the camera. The <kbd>Mouse Scroll Wheel</kbd> adjusts the distance.</li>
+                                    <li>• **`AdminObjectScaler.cs`**: In `Scale` mode, the <kbd>Mouse Scroll Wheel</kbd> uniformly scales the selected object.</li>
+                                    <li>• **`AdminObjectRotator.cs`**: In `Rotate` mode, the <kbd>Mouse Scroll Wheel</kbd> rotates the selected object around the axis specified by `AdminModeController.CurrentRotationAxis`.</li>
+                                </ul>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-csharp">// Simplified logic from AdminObjectMover.cs
+public class AdminObjectMover : MonoBehaviour
+{
+    public AdminObjectSelector selector;
+    public Transform holdPoint; // Usually the camera transform or a point in front
+    private float holdDistance = 1f;
+    
+    void Update() {
+        GameObject obj = selector.GetSelectedObject();
+        if (obj != null) 
+        {
+            // Calculate target position based on camera orientation and distance
+            Vector3 targetPosition = holdPoint.position + holdPoint.forward * holdDistance;
+            // Smoothly move the object towards the target position
+            obj.transform.position = Vector3.Lerp(obj.transform.position, targetPosition, Time.deltaTime * pullSpeed);
+
+            // Adjust holdDistance with scroll wheel in Move mode
+            if (AdminModeController.CurrentMode == AdminModeController.Mode.Move)
+            {
+                 float scroll = Input.GetAxis("Mouse ScrollWheel");
+                 if (scroll != 0)
+                 {
+                     holdDistance += scroll * scrollSpeed;
+                     holdDistance = Mathf.Clamp(holdDistance, 1f, 100f); // Limit distance
+                 }
+            }
+        }
+    }
+}
+
+// Simplified logic from AdminObjectRotator.cs
+public class AdminObjectRotator : MonoBehaviour 
+{
+    public AdminObjectSelector selector;
+    public Transform adminCamera; // Used to determine world rotation axis
+
+    void Update() 
+    {
+        if (AdminModeController.CurrentMode == AdminModeController.Mode.Rotate) {
+             GameObject obj = selector.GetSelectedObject();
+             float scroll = Input.GetAxisRaw("Mouse ScrollWheel");
+             if (obj != null && scroll != 0) 
+             {
+                 Vector3 rotationAxis = Vector3.zero;
+                 // Determine world-space axis based on camera orientation
+                 switch (AdminModeController.CurrentRotationAxis)
+                 {
+                     case AdminModeController.RotationAxis.X: rotationAxis = adminCamera.right; break;
+                     case AdminModeController.RotationAxis.Y: rotationAxis = adminCamera.up; break;
+                     case AdminModeController.RotationAxis.Z: rotationAxis = adminCamera.forward; break;
+                 }
+                 // Apply rotation around the calculated axis
+                 obj.transform.Rotate(rotationAxis, scroll * rotationSpeed * Time.deltaTime, Space.World);
+             }
+        }
+    }
+}
+
+// Simplified logic from AdminObjectScaler.cs
+public class AdminObjectScaler : MonoBehaviour
+{
+     void Update() {
+        if (AdminModeController.CurrentMode == AdminModeController.Mode.Scale) {
+             GameObject obj = selector.GetSelectedObject();
+             float scroll = Input.GetAxisRaw("Mouse ScrollWheel");
+             if (obj != null && scroll != 0) 
+             {
+                 // Calculate new scale based on scroll input
+                 Vector3 scaleChange = Vector3.one * scroll * scaleSpeed;
+                 Vector3 newScale = obj.transform.localScale + scaleChange;
+                 // Clamp scale to prevent it becoming too small or inverted
+                 newScale = Vector3.Max(newScale, new Vector3(0.05f, 0.05f, 0.05f)); 
+                 // Apply the new scale
+                 obj.transform.localScale = newScale;
+             }
+        }
+    }
+}</code></pre>
+
+                                <h4 class="h5 mb-3">5. Scene Configuration Persistence (`PortaltSceneExporter.cs`)</h4>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                    <li>• Located in `Assets/Custom/Integration Scripts/`, this script handles saving the modified scene layout.</li>
+                                    <li>• It finds all objects with `SceneObjectMetadata` and updates the in-memory `SceneConfiguration` object (held by `PortaltSceneLoader`) with their current `Transform` values.</li>
+                                    <li>• The updated `SceneConfiguration` is serialized to JSON.</li>
+                                    <li>• A `UnityWebRequest` (HTTP PUT) sends the JSON data to the backend API endpoint, persisting the changes.</li>
+                                    <li>• Includes a <kbd>Ctrl</kbd>+<kbd>S</kbd> shortcut in the Unity Editor for convenience.</li>
+                                </ul>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-csharp">// Simplified logic from PortaltSceneExporter.cs
+public class PortaltSceneExporter : MonoBehaviour
+{
+    public PortaltServerConfig serverConfig;
+    public PortaltSceneLoader sceneLoader;
+
+    // Main public method to trigger save
+    public async Task<bool> SaveSceneToApi()
+    {
+        SceneConfiguration config = sceneLoader.CurrentSceneConfig;
+        if (config == null) return false;
+        UpdateSceneObjectTransforms(ref config);
+        return await UploadSceneConfigurationAsync(config);
+    }
+
+    // Updates the SceneConfiguration object based on GameObjects in the scene
+    public void UpdateSceneObjectTransforms(ref SceneConfiguration config)
+    {
+        SceneObjectMetadata[] sceneObjects = FindObjectsByType<SceneObjectMetadata>(...);
+        foreach (var configObj in config.objects) {
+            foreach (SceneObjectMetadata meta in sceneObjects) {
+                if (meta.objectId == configObj.object_id) {
+                    configObj.position = Vector3Serializable.FromVector3(meta.transform.position);
+                    configObj.rotation = Vector3Serializable.FromVector3(meta.transform.eulerAngles);
+                    configObj.scale = Vector3Serializable.FromVector3(meta.transform.localScale);
+                    break; 
+                }
+            }
+        }
+        config.updatedAt = DateTime.UtcNow.ToString("o");
+    }
+
+    // Sends the configuration JSON to the API endpoint
+    private async Task<bool> UploadSceneConfigurationAsync(SceneConfiguration config)
+    {
+        string url = serverConfig.GetSceneConfigUrl(config.scene_id);
+        string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(config);
+        using (UnityWebRequest request = UnityWebRequest.Put(url, jsonData)) {
+            request.SetRequestHeader("Content-Type", "application/json");
+            var operation = request.SendWebRequest();
+            while (!operation.isDone) await Task.Yield();
+            return request.result == UnityWebRequest.Result.Success;
+        }
+    }
+
+    // Editor shortcut
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.S) && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))) {
+            _ = SaveSceneToApi(); 
+        }
+    }
+}</code></pre>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Integration with Scene Data</h3>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                     <li>• Objects intended for manipulation should have the `SceneObjectMetadata.cs` script attached and be placed on the "Selectable" layer.</li>
+                                     <li>• Changes made (position, rotation, scale) modify the object's `Transform` component directly in the Unity scene.</li>
+                                     <li>• The `PortaltSceneExporter.cs` script (in `Integration Scripts`) is responsible for reading the final `Transform` values of these objects and saving them back to the scene configuration database via the backend API.</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Future Enhancements</h3>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                     <li>• Implementing visual gizmos for more precise manipulation.</li>
+                                     <li>• Adding snapping functionality for easier alignment.</li>
+                                     <li>• Support for multi-object selection and manipulation.</li>
+                                     <li>• Undo/Redo functionality for placement actions.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -729,98 +994,6 @@ export default async function handler(
                                             <li>• Secure public route handling</li>
                                             <li>• Authentication bypass for specific routes</li>
                                         </ul>
-                        </div>
-                    </div>
-                            </div>
-
-                            <div class="mb-4">
-                                <h3 class="h4 mb-3">Implementation Benefits</h3>
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <h5 class="h6 fw-bold mb-2">Security & Scalability</h5>
-                                        <ul class="list-unstyled ms-4">
-                                            <li>• Professional-grade authentication</li>
-                                            <li>• Regular security updates</li>
-                                            <li>• Built-in organization management</li>
-                                            <li>• Efficient session handling</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <h5 class="h6 fw-bold mb-2">User Experience & Maintenance</h5>
-                                        <ul class="list-unstyled ms-4">
-                                            <li>• Seamless authentication flow</li>
-                                            <li>• Organization switching</li>
-                                            <li>• Reduced security maintenance</li>
-                                            <li>• Automated updates</li>
-                                        </ul>
-                </div>
-            </div>
-        </div>
-
-                            <div class="mb-4">
-                                <h3 class="h4 mb-3">Environment Configuration</h3>
-                                <pre class="bg-light p-3 rounded-4"><code class="language-bash"># Required environment variables
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
-CLERK_SECRET_KEY=your_secret_key</code></pre>
-                            </div>
-
-                            <div class="mb-4">
-                                <h3 class="h4 mb-3">Error Handling</h3>
-                                <p class="mb-3">The authentication system implements comprehensive error handling:</p>
-                                <ul class="list-unstyled ms-4 mb-4">
-                                    <li>• Invalid credentials</li>
-                                    <li>• Session expiration</li>
-                                    <li>• Organization access errors</li>
-                                    <li>• API authentication failures</li>
-                                </ul>
-                            </div>
-
-                            <div class="mb-4">
-                                <h3 class="h4 mb-3">Testing Considerations</h3>
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <h5 class="h6 fw-bold mb-2">Authentication Tests</h5>
-                                        <ul class="list-unstyled ms-4">
-                                            <li>• Login flow</li>
-                                            <li>• Organization selection</li>
-                                            <li>• Session management</li>
-                                            <li>• Error scenarios</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <h5 class="h6 fw-bold mb-2">Security Tests</h5>
-                                        <ul class="list-unstyled ms-4">
-                                            <li>• Token validation</li>
-                                            <li>• Organization isolation</li>
-                                            <li>• API access control</li>
-                                            <li>• Public route access</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="mb-4">
-                                <h3 class="h4 mb-3">Future Enhancements</h3>
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <h5 class="h6 fw-bold mb-2">Planned Features</h5>
-                                        <ul class="list-unstyled ms-4">
-                                            <li>• Role-based access control</li>
-                                            <li>• Multi-factor authentication</li>
-                                            <li>• OAuth provider integration</li>
-                                            <li>• Custom authentication flows</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <h5 class="h6 fw-bold mb-2">Security Improvements</h5>
-                                        <ul class="list-unstyled ms-4">
-                                            <li>• Enhanced session management</li>
-                                            <li>• Advanced organization policies</li>
-                                            <li>• Audit logging</li>
-                                            <li>• Security analytics</li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -1090,6 +1263,288 @@ ASSET_CACHE_DURATION=3600</code></pre>
                                     <li>Real-time collaborative editing features</li>
                                     <li>Enhanced conflict resolution strategies</li>
                                     <li>Automated asset optimization pipeline</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Feature 6: Viewer Scene Implementation -->
+    <section id="feature-6" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
+                        <div class="card-body">
+                            <h2 class="mb-4">Key Feature 6: Viewer Scene Implementation</h2>
+                            
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Overview</h3>
+                                <p class="mb-4">
+                                    The Viewer Scene provides the end-user experience, allowing users (typically in VR) to join and explore the 3D environments configured using the Admin Scene or the web dashboard. 
+                                    It focuses on loading pre-defined scene layouts, connecting users via Ubiq networking, and displaying the assets accurately based on the saved configuration.
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Implementation Details</h3>
+                                <p class="mb-3">
+                                    The Viewer Scene relies on several key scripts from the `Assets/Custom/Integration Scripts/` folder to manage the connection, loading, and display process.
+                                </p>
+
+                                <h4 class="h5 mb-3">1. Entry Point & Configuration (`VRViewerManager.cs`)</h4>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                    <li>• Acts as the main controller for the Viewer Scene.</li>
+                                    <li>• Holds configuration (`PortaltServerConfigV`) containing the backend server address and the specific `activityId` to load.</li>
+                                    <li>• Manages the initial setup, ensuring necessary components like `PortaltSceneLoader` and `JoincodeInputManager` are ready.</li>
+                                    <li>• Can be configured to require a join code input via the `JoincodeInputManager` before proceeding.</li>
+                                    <li>• Initiates the scene loading process once configuration and connection details are available.</li>
+                                </ul>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-csharp">// Simplified logic from VRViewerManager.cs
+public class VRViewerManager : MonoBehaviour
+{
+    public PortaltServerConfigV serverConfig;
+    public string activityIdToLoad;
+    public bool requireJoincode = true;
+    public JoincodeInputManager joincodeManager;
+    private PortaltSceneLoader sceneLoader;
+
+    void Start()
+    {
+        SetupComponents(); // Ensure Loader, API Client etc. exist
+
+        if (requireJoincode && string.IsNullOrEmpty(serverConfig.joinCode))
+        {
+            joincodeManager.ShowJoincodeUI(); // Wait for user input
+        }
+        else if (loadOnStart)
+        {
+            StartCoroutine(LoadWithDelay()); // Start loading process
+        }
+    }
+
+    public void LoadFromJoinCode() 
+    {
+        // Fetch configuration from backend using join code / activity ID
+        StartCoroutine(FetchAndLoadFromJoinUrl());
+    }
+
+    private IEnumerator FetchAndLoadFromJoinUrl()
+    {
+        // Use UnityWebRequest to get SceneConfiguration JSON from join URL
+        // ... On success:
+        // SceneConfiguration config = ParseJson(downloadHandler.text);
+        // sceneLoader.LoadScene(config); // Pass config to loader
+    }
+
+    // Coroutine to handle the web request
+    private IEnumerator FetchConfigCoroutine(string url, Action<SceneConfiguration> onSuccess, Action<string> onError)
+    {
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
+        {
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.result == UnityWebRequest.Result.Success)
+            {
+                try
+                {
+                    SceneConfiguration config = JsonUtility.FromJson<SceneConfiguration>(webRequest.downloadHandler.text);
+                    onSuccess?.Invoke(config);
+                }
+                catch (Exception e)
+                {
+                    onError?.Invoke($"Failed to parse scene configuration: {e.Message}");
+                }
+            }
+            else
+            {
+                onError?.Invoke($"Failed to fetch scene configuration: {webRequest.error}");
+            }
+        }
+    }
+}</code></pre>
+
+                                <h4 class="h5 mb-3">2. Scene Loading & Object Instantiation (`PortaltSceneLoader.cs`)</h4>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                    <li>• Receives the `SceneConfiguration` data (fetched by `VRViewerManager` or potentially other triggers).</li>
+                                    <li>• Clears any previously loaded objects to ensure a fresh scene.</li>
+                                    <li>• Iterates through the `objects` array within the `SceneConfiguration`.</li>
+                                    <li>• For each object, it asynchronously downloads the 3D model (glTF/GLB) from the specified `modelUrl` using `ModelDownloader` internally via `GLTFUtility`.</li>
+                                    <li>• Instantiates the downloaded model into the Unity scene.</li>
+                                    <li>• Applies the exact `position`, `rotation`, and `scale` from the configuration data to the instantiated object's `Transform`.</li>
+                                    <li>• Manages a loading screen via `LoadingScreenManager` during the process.</li>
+                                </ul>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-csharp">// Simplified logic from PortaltSceneLoader.cs
+public class PortaltSceneLoader : MonoBehaviour
+{
+    private List<GameObject> loadedObjects = new List<GameObject>();
+
+    public async Task<bool> LoadScene(SceneConfiguration config)
+    {
+        ClearScene(); // Remove old objects
+        ShowLoadingScreen(config.scene_id);
+
+        currentSceneConfig = config;
+
+        List<Task> loadingTasks = new List<Task>();
+        foreach (SceneObject objData in config.objects)
+        {
+            loadingTasks.Add(LoadAndPlaceObjectAsync(objData));
+        }
+        await Task.WhenAll(loadingTasks);
+
+        HideLoadingScreen();
+        return true;
+    }
+
+    // Renamed for clarity
+    private async Task LoadAndPlaceObjectAsync(SceneObject objData)
+    {
+        GameObject instantiatedModel = null;
+        try
+        {
+            // Asynchronously download and import the glTF/GLB model
+            // GLTFUtility.LoadModelAsync handles the download and parsing
+            instantiatedModel = await Siccity.GLTFUtility.GLTFImporter.LoadModelAsync(objData.modelUrl);
+
+            if (instantiatedModel != null)
+            {
+                // Apply transform data from the configuration
+                ApplyTransform(instantiatedModel, objData);
+
+                // Add metadata component (useful for identification or interaction)
+                SceneObjectMetadata metadata = instantiatedModel.AddComponent<SceneObjectMetadata>();
+                metadata.Initialize(objData.object_id, objData.modelUrl); 
+
+                // Optionally add colliders (needed for physics or selection)
+                AddColliders(instantiatedModel);
+
+                // Keep track of the object
+                loadedObjects.Add(instantiatedModel);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to load model {objData.object_id} from {objData.modelUrl}: {e.Message}");
+            if (instantiatedModel != null) Destroy(instantiatedModel); // Clean up partially loaded object
+        }
+    }
+
+    // Renamed for clarity
+    private void ApplyTransform(GameObject modelInstance, SceneObject objData)
+    {
+        // Convert stored position, rotation, scale to Unity's Vector3 and Quaternion
+        modelInstance.transform.position = objData.position.ToVector3();
+        modelInstance.transform.rotation = Quaternion.Euler(objData.rotation.ToVector3()); // Convert Euler angles
+        modelInstance.transform.localScale = objData.scale.ToVector3();
+    }
+
+    // Helper to dynamically add colliders based on mesh bounds
+    private void AddColliders(GameObject modelInstance)
+    {
+        // Example: Add a BoxCollider encompassing all child renderers
+        Bounds combinedBounds = new Bounds();
+        Renderer[] renderers = modelInstance.GetComponentsInChildren<Renderer>();
+        if (renderers.Length > 0)
+        {
+            combinedBounds = renderers[0].bounds;
+            foreach (Renderer renderer in renderers)
+            {
+                combinedBounds.Encapsulate(renderer.bounds);
+            }
+
+            BoxCollider collider = modelInstance.AddComponent<BoxCollider>();
+            // Adjust collider center and size relative to the model's root transform
+            collider.center = modelInstance.transform.InverseTransformPoint(combinedBounds.center);
+            collider.size = modelInstance.transform.InverseTransformVector(combinedBounds.size);
+        }
+    }
+
+    public void ClearScene()
+    {
+        foreach (var obj in loadedObjects) { Destroy(obj); }
+        loadedObjects.Clear();
+        // Destroy collider visualizations too
+    }
+}</code></pre>
+
+                                <h4 class="h5 mb-3">3. Network Connection (`JoincodeInputManager.cs` & Ubiq)</h4>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                    <li>• Handles the user interface for entering a join code if required by `VRViewerManager`.</li>
+                                    <li>• Configures the Ubiq `RoomClient` connection details (IP address, port) based on the server configuration.</li>
+                                    <li>• Uses the provided join code to connect to the correct Ubiq room, enabling shared experiences between viewers.</li>
+                                    <li>• The actual synchronization of player avatars and any dynamic interactions relies on the underlying Ubiq networking components attached to relevant prefabs.</li>
+                                </ul>
+                                <pre class="bg-light p-3 rounded-4 mb-4"><code class="language-csharp">// Simplified logic from JoincodeInputManager.cs related to connection
+public class JoincodeInputManager : MonoBehaviour
+{
+    public InputField joincodeInputField; 
+    public GameObject uiPanel; 
+    private RoomClient roomClient;
+ 
+    void Awake()
+    {
+        roomClient = FindObjectOfType<RoomClient>();
+        // ... other setup ...
+    }
+ 
+    public void ShowJoincodeUI()
+    {
+        uiPanel.SetActive(true);
+    }
+ 
+    public void AttemptJoinWithJoincode()
+    {
+        string joincode = joincodeInputField.text;
+        if (!string.IsNullOrEmpty(joincode))
+        {
+            // Potentially fetch server details based on joincode from an API first
+            // ... (Assuming server details are already in serverConfig for simplicity)
+
+            // Configure RoomClient connection definition
+            var connection = ScriptableObject.CreateInstance<ConnectionDefinition>();
+            connection.sendToIp = serverConfig.serverIp; 
+            connection.sendToPort = serverConfig.serverPort;
+            connection.type = ConnectionDefinition.Type.TcpClient; // Or appropriate type
+            roomClient.SetDefaultServer(connection);
+
+            // Use joincode to join the specific room
+            roomClient.Join(joincode);
+            
+            uiPanel.SetActive(false); 
+            // Trigger scene loading via VRViewerManager or event
+            FindObjectOfType<VRViewerManager>()?.LoadFromJoinCode(); 
+        }
+    }
+}</code></pre>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="text-center my-4">
+                                </div>
+                                <!-- TODO: Create and add the actual diagram -->
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Key Differences from Admin Scene</h3>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                     <li>• **No Editing**: The Viewer Scene does not include the interactive object placement tools (`AdminObjectSelector`, `Mover`, `Rotator`, `Scaler`).</li>
+                                     <li>• **Direct Load**: Typically loads a specific scene configuration fetched directly based on an activity ID or join code.</li>
+                                     <li>• **Ubiq Focus**: Relies heavily on Ubiq for establishing a connection to a shared room defined by the join code.</li>
+                                     <li>• **End-User Interaction**: Designed for consumption and exploration, with interaction potentially handled by standard VR controllers and Ubiq components rather than admin tools.</li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-4">
+                                <h3 class="h4 mb-3">Future Enhancements</h3>
+                                <ul class="list-unstyled ms-4 mb-3">
+                                     <li>• Adding simple interaction capabilities (e.g., grabbing, basic physics).</li>
+                                     <li>• Implementing teleportation or other VR locomotion methods.</li>
+                                     <li>• Displaying dynamic information or annotations linked to objects.</li>
+                                     <li>• Optimizing loading performance for very large scenes or models.</li>
                                 </ul>
                             </div>
                         </div>
