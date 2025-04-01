@@ -97,279 +97,443 @@
                         <div class="card-body">
                             <h2 class="mb-4">Deployment Manual</h2>
                             
-                            <div class="mb-5">
-                                <h3 class="h4 mb-3">System Requirements</h3>
-                                <!-- Placeholder for system requirements content -->
-                            </div>
-                            
-                            <div class="mb-5">
-                                <h3 class="h4 mb-3">Installation Steps</h3>
-                                <!-- Placeholder for installation steps content -->
-                            </div>
-                            
-                            <div class="mb-5">
-                                <h3 class="h4 mb-3">Configuration</h3>
-                                <!-- Placeholder for configuration content -->
-                            </div>
-                            
-                            <div class="mb-5">
-                                <h3 class="h4 mb-3">Troubleshooting</h3>
-                                <!-- Placeholder for troubleshooting content -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                            <div class="accordion" id="deploymentAccordion">
+                                <!-- System Requirements -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#systemRequirements">
+                                            System Requirements
+                                        </button>
+                                    </h2>
+                                    <div id="systemRequirements" class="accordion-collapse collapse show" data-bs-parent="#deploymentAccordion">
+                                        <div class="accordion-body">
+                                            <div class="system-requirements">
+                                                <h5>1. Admin App Requirements</h5>
+                                                <ul>
+                                                    <li><strong>Hardware</strong>:
+                                                        <ul>
+                                                            <li>Minimum 4 CPU cores</li>
+                                                            <li>16GB RAM</li>
+                                                            <li>100GB SSD storage</li>
+                                                            <li>High-speed internet connection</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><strong>Software</strong>:
+                                                        <ul>
+                                                            <li>Node.js 18+</li>
+                                                            <li>Next.js 14</li>
+                                                            <li>Electron</li>
+                                                            <li>TypeScript</li>
+                                                            <li>Docker and Kubernetes tools</li>
+                                                            <li>IBM Cloud CLI</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
 
-    <!-- Legal Issues and Processes -->
-    <section id="legal-issues" class="py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card border-0 shadow rounded-4 p-4 bg-white" data-aos="fade-up">
-                        <div class="card-body">
-                            <h2 class="mb-4">Legal Issues and Processes</h2>
-                            
-                            <div class="mb-5">
-                                <h3 class="h4 mb-3">GDPR Compliance</h3>
-                                <!-- Placeholder for GDPR compliance content -->
-                                <div class="gdpr-compliance">
-                                    <h5>Overview</h5>
-                                    <p>Portalt is committed to protecting user data and privacy in compliance with the General Data Protection Regulation (GDPR). This document outlines our approach to GDPR compliance and our data protection measures.</p>
-                                    
-                                    <h5 class="mt-4">Data Collection Principles</h5>
-                                    <ul>
-                                        <li><strong>Lawfulness, fairness, and transparency</strong>: We collect and process data with a clear legal basis and in a transparent manner.</li>
-                                        <li><strong>Purpose limitation</strong>: Data is collected for specified, explicit, and legitimate purposes only.</li>
-                                        <li><strong>Data minimization</strong>: We limit data collection to what is necessary for the platform's functionality.</li>
-                                        <li><strong>Accuracy</strong>: Measures are in place to ensure data accuracy and provide means for updates.</li>
-                                        <li><strong>Storage limitation</strong>: Data is stored only for the duration necessary to fulfill its purpose.</li>
-                                        <li><strong>Security</strong>: Appropriate technical and organizational measures protect against unauthorized processing and accidental loss.</li>
-                                    </ul>
-                                    
-                                    <h5 class="mt-4">User Rights</h5>
-                                    <p>In accordance with GDPR, Portalt users have the right to:</p>
-                                    <ul>
-                                        <li>Access their personal data</li>
-                                        <li>Rectify inaccurate data</li>
-                                        <li>Erase their data ("right to be forgotten")</li>
-                                        <li>Restrict processing of their data</li>
-                                        <li>Data portability (receive their data in a structured, commonly used format)</li>
-                                        <li>Object to data processing</li>
-                                        <li>Not be subject to automated decision-making, including profiling</li>
-                                    </ul>
-                                    
-                                    <h5 class="mt-4">Implementation Measures</h5>
-                                    <ul>
-                                        <li><strong>Data Protection Officer</strong>: A designated team member oversees GDPR compliance.</li>
-                                        <li><strong>Data Protection Impact Assessments</strong>: Conducted for high-risk processing activities.</li>
-                                        <li><strong>Privacy by Design</strong>: Data protection incorporated into system architecture.</li>
-                                        <li><strong>Breach Notification</strong>: Procedures in place to report data breaches within 72 hours.</li>
-                                        <li><strong>Consent Management</strong>: Clear, granular consent options with easy withdrawal mechanism.</li>
-                                        <li><strong>Third-party Processors</strong>: Data processing agreements with all service providers.</li>
-                                    </ul>
-                                    
-                                    <h5 class="mt-4">Contact Information</h5>
-                                    <p>For GDPR-related inquiries or to exercise your data rights, please contact our Data Protection Officer at <a href="mailto:dpo@portalt.com">dpo@portalt.com</a>.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="mb-5">
-                                <h3 class="h4 mb-3">Privacy Policy</h3>
-                                <!-- Placeholder for privacy policy content -->
-                                <div class="privacy-policy">
-                                    <h5>Effective Date: March 15, 2025</h5>
-                                    <p>This Privacy Policy describes how Portalt ("we", "our", or "us") collects, uses, and shares your personal information when you use our virtual tour platform.</p>
-                                    
-                                    <h5 class="mt-4">Information We Collect</h5>
-                                    <p><strong>Personal Information</strong></p>
-                                    <ul>
-                                        <li><strong>Account Information</strong>: Name, email address, password, and profile information when you create an account.</li>
-                                        <li><strong>User Content</strong>: Virtual tours, annotations, customizations, and other content you create, upload, or store on the platform.</li>
-                                        <li><strong>Communications</strong>: Information you provide when contacting our support team or participating in surveys and feedback sessions.</li>
-                                    </ul>
-                                    
-                                    <p><strong>Automatically Collected Information</strong></p>
-                                    <ul>
-                                        <li><strong>Device Information</strong>: Device type, operating system, browser type, IP address, and unique device identifiers.</li>
-                                    </ul>
-                                    
-                                    <h5 class="mt-4">How We Use Your Information</h5>
-                                    <ul>
-                                        <li>Providing and improving our platform functionality</li>
-                                        <li>Processing transactions and managing your account</li>
-                                        <li>Personalizing your experience and content</li>
-                                        <li>Communicating with you about updates, features, and support</li>
-                                        <li>Analyzing usage patterns to enhance platform performance</li>
-                                        <li>Ensuring security and preventing fraud</li>
-                                        <li>Complying with legal obligations</li>
-                                    </ul>
-                                    
-                                    <h5 class="mt-4">Information Sharing</h5>
-                                    <p>We may share your information with:</p>
-                                    <ul>
-                                        <li><strong>Business Partners</strong>: With your consent, for integrations or joint offerings</li>
-                                        <li><strong>Legal Requirements</strong>: When required by law, legal process, or to protect our rights</li>
-                                        <li><strong>Business Transfers</strong>: In connection with a merger, acquisition, or sale of assets</li>
-                                    </ul>
-                                    <p>We do not sell your personal information to third parties.</p>
-                                    
-                                    <h5 class="mt-4">Data Security</h5>
-                                    <p>We implement appropriate technical and organizational measures to protect your personal information, including encryption, access controls, and regular security assessments. However, no method of transmission over the Internet is 100% secure, and we cannot guarantee absolute security.</p>
-                                    
-                                    <h5 class="mt-4">Data Retention</h5>
-                                    <p>We retain your personal information for as long as necessary to provide our services, comply with legal obligations, resolve disputes, and enforce our agreements. When no longer needed, we securely delete or anonymize your information.</p>
-                                    
-                                    <h5 class="mt-4">Your Choices</h5>
-                                    <ul>
-                                        <li><strong>Account Information</strong>: Update or correct your information through your account settings</li>
-                                        <li><strong>Cookies</strong>: Manage cookie preferences through your browser settings</li>
-                                        <li><strong>Data Access and Deletion</strong>: Request a copy of your data or account deletion through our Data Protection Officer</li>
-                                    </ul>
-                                    
-                                    <h5 class="mt-4">Children's Privacy</h5>
-                                    <p>Portalt is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us immediately.</p>
-                                    
-                                    <h5 class="mt-4">Changes to This Policy</h5>
-                                    <p>We may update this Privacy Policy periodically to reflect changes in our practices or for legal, operational, or regulatory reasons. We will notify you of any material changes through the platform or by email.</p>
-                                    
-                                    <h5 class="mt-4">Contact Us</h5>
-                                    <p>If you have questions or concerns about this Privacy Policy or our data practices, please contact our Data Protection Officer at <a href="mailto:privacy@portalt.com">privacy@portalt.com</a>.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="mb-5">
-                                <h3 class="h4 mb-3">Source Code License</h3>
-                                <!-- Placeholder for source code license content -->
-                                <div class="source-code-license">
-                                    <h5>MIT License</h5>
-                                    <p>Copyright (c) 2025 Team 20 - Portalt</p>
+                                                <h5 class="mt-4">2. Ubiq-Genie Server Requirements</h5>
+                                                <ul>
+                                                    <li><strong>Hardware</strong>:
+                                                        <ul>
+                                                            <li>Minimum 4 CPU cores</li>
+                                                            <li>16GB RAM</li>
+                                                            <li>100GB SSD storage</li>
+                                                            <li>High-speed internet connection</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><strong>Software</strong>:
+                                                        <ul>
+                                                            <li>Python 3.10+</li>
+                                                            <li>Node.js 20+</li>
+                                                            <li>FAISS vector store</li>
+                                                            <li>Sentence-transformers</li>
+                                                            <li>Docker and Kubernetes tools</li>
+                                                            <li>IBM Cloud CLI</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
 
-                                    <div class="license-text mt-3">
-                                        <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-                                        
-                                        <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-                                        
-                                        <p class="text-uppercase">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+                                                <h5 class="mt-4">3. VR Scenes Requirements</h5>
+                                                <ul>
+                                                    <li><strong>Hardware</strong>:
+                                                        <ul>
+                                                            <li>VR-capable GPU (NVIDIA RTX 3060 or better)</li>
+                                                            <li>16GB RAM</li>
+                                                            <li>100GB SSD storage</li>
+                                                            <li>High-speed internet connection</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><strong>Software</strong>:
+                                                        <ul>
+                                                            <li>Unity 2022.3 LTS or later</li>
+                                                            <li>Unity Hub</li>
+                                                            <li>Android Build Support</li>
+                                                            <li>iOS Build Support</li>
+                                                            <li>Universal Windows Platform Build Support</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <h5 class="mt-4">Tech Stack Components</h5>
-                                    <p>Portalt is built using the following technologies, each with their own licenses:</p>
-
-                                    <div class="tech-stack mt-3">
-                                        <h6>Frontend</h6>
-                                        <ul>
-                                            <li><strong>HTML5/CSS3</strong>: W3C Software License - Core web technologies</li>
-                                            <li><strong>Bootstrap 5</strong>: MIT License - Responsive CSS framework</li>
-                                            <li><strong>JavaScript</strong>: Standard ECMA-262 - Programming language</li>
-                                            <li><strong>Font Awesome</strong>: Font Awesome Free License - Icon library</li>
-                                            <li><strong>AOS</strong>: MIT License - Animate on scroll library</li>
-                                            <li><strong>Google Model Viewer</strong>: Apache License 2.0 - 3D model rendering</li>
-                                        </ul>
-
-                                        <h6 class="mt-3">Development Tools</h6>
-                                        <ul>
-                                            <li><strong>Visual Studio Code</strong>: MIT License - Source code editor</li>
-                                            <li><strong>Git</strong>: GNU General Public License v2.0 - Version control system</li>
-                                            <li><strong>GitHub</strong>: Terms of Service - Code hosting platform</li>
-                                        </ul>
-
-                                        <h6 class="mt-3">Content Delivery</h6>
-                                        <ul>
-                                            <li><strong>GitHub Pages</strong>: Terms of Service - Static site hosting</li>
-                                            <li><strong>CDNs</strong>: Various licenses - Content delivery networks for libraries</li>
-                                        </ul>
-                                    </div>
-
-                                    <h5 class="mt-4">Third-Party Assets</h5>
-                                    <p>Portalt utilizes various third-party assets including images, fonts, and code libraries. All assets are either licensed for use in this project, created by the team, or available under open-source/free-use licenses.</p>
-
-                                    <h5 class="mt-4">Contributing</h5>
-                                    <p>We welcome contributions to the Portalt project. By submitting code or other content to the project, you agree that your contributions will be licensed under the same MIT License as the project. For major changes, please contact us first to discuss what you would like to change.</p>
-
-                                    <h5 class="mt-4">Contact</h5>
-                                    <p>For questions regarding licensing or code contributions, please contact the development team at <a href="mailto:dev@portalt.com">dev@portalt.com</a>.</p>
                                 </div>
-                            </div>
-                            
-                            <div class="mb-5">
-                                <h3 class="h4 mb-3">Data Governance</h3>
-                                <!-- Placeholder for data governance content -->
-                                <div class="data-governance">
-                                    <h5>Data Governance Framework</h5>
-                                    <p>Portalt implements a structured data governance framework to ensure responsible management of all data throughout its lifecycle. This framework establishes policies, procedures, and standards for data quality, security, privacy, and compliance.</p>
-                                    
-                                    <h5 class="mt-4">Data Classification</h5>
-                                    <p>We classify data into the following categories to determine appropriate handling procedures:</p>
-                                    <ul>
-                                        <li><strong>Public Data</strong>: Information that can be freely shared (e.g., public virtual tour content, marketing materials)</li>
-                                        <li><strong>Internal Data</strong>: Non-sensitive information for internal use (e.g., non-personal analytics, operational metrics)</li>
-                                        <li><strong>Confidential Data</strong>: Sensitive information requiring protection (e.g., user credentials, payment information)</li>
-                                        <li><strong>Restricted Data</strong>: Highly sensitive information with strict access controls (e.g., private virtual tour content, personal identifiable information)</li>
-                                    </ul>
-                                    
-                                    <h5 class="mt-4">Data Ownership and Stewardship</h5>
-                                    <ul>
-                                        <li><strong>Data Owners</strong>: Department heads responsible for specific data domains</li>
-                                        <li><strong>Data Stewards</strong>: Individuals who manage data quality, metadata, and access controls</li>
-                                        <li><strong>Data Custodians</strong>: IT staff responsible for technical management of data storage and security</li>
-                                        <li><strong>Data Users</strong>: All personnel who access and use data in their roles</li>
-                                    </ul>
-                                    
-                                    <h5 class="mt-4">Data Quality Management</h5>
-                                    <p>To maintain high data quality standards, Portalt implements:</p>
-                                    <ul>
-                                        <li><strong>Data Quality Metrics</strong>: Regular assessment of accuracy, completeness, consistency, and timeliness</li>
-                                        <li><strong>Data Validation Rules</strong>: Automated checks during data entry and processing</li>
-                                        <li><strong>Data Cleansing Procedures</strong>: Regular audits and corrections of data anomalies</li>
-                                        <li><strong>Master Data Management</strong>: Centralized control of key data entities</li>
-                                    </ul>
-                                    
-                                    <h5 class="mt-4">Data Lifecycle Management</h5>
-                                    <p>We manage data through its entire lifecycle:</p>
-                                    <ol>
-                                        <li><strong>Creation/Acquisition</strong>: Data collection with proper consent and validation</li>
-                                        <li><strong>Storage</strong>: Secure database systems with appropriate access controls</li>
-                                        <li><strong>Usage</strong>: Monitored data access and processing aligned with stated purposes</li>
-                                        <li><strong>Archiving</strong>: Transferring inactive data to long-term storage when appropriate</li>
-                                        <li><strong>Deletion</strong>: Secure data removal when retention periods expire or upon request</li>
-                                    </ol>
-                                    
-                                    <h5 class="mt-4">Data Access Controls</h5>
-                                    <p>Access to data is managed through:</p>
-                                    <ul>
-                                        <li><strong>Role-Based Access Control (RBAC)</strong>: Permissions assigned based on job responsibilities</li>
-                                        <li><strong>Principle of Least Privilege</strong>: Users granted minimum access needed for their role</li>
-                                        <li><strong>Authentication Requirements</strong>: Multi-factor authentication for accessing sensitive data</li>
-                                        <li><strong>Access Review Process</strong>: Regular audits of access permissions</li>
-                                    </ul>
-                                    
-                                    <h5 class="mt-4">Data Retention Policy</h5>
-                                    <p>Portalt retains different types of data according to the following guidelines:</p>
-                                    <ul>
-                                        <li><strong>User Account Data</strong>: Retained while account is active; deleted or anonymized within 30 days of account closure</li>
-                                        <li><strong>Virtual Tour Content</strong>: Retained as long as specified by content creator; default retention period of 3 years for inactive content</li>
-                                        <li><strong>Usage Analytics</strong>: Retained in identifiable form for 12 months; thereafter anonymized for long-term analysis</li>
-                                        <li><strong>Communication Records</strong>: Retained for 2 years to support customer service and legal requirements</li>
-                                    </ul>
-                                    
-                                    <h5 class="mt-4">Data Incident Response</h5>
-                                    <p>In the event of a data breach or security incident:</p>
-                                    <ol>
-                                        <li><strong>Detection and Assessment</strong>: Immediate evaluation of incident scope and impact</li>
-                                        <li><strong>Containment</strong>: Swift action to limit data exposure and prevent further breach</li>
-                                        <li><strong>Notification</strong>: Communication with affected users and relevant authorities within required timeframes</li>
-                                        <li><strong>Recovery</strong>: Restoration of systems and data integrity</li>
-                                        <li><strong>Post-Incident Analysis</strong>: Investigation of root causes and implementation of preventive measures</li>
-                                    </ol>
-                                    
-                                    <h5 class="mt-4">Data Governance Committee</h5>
-                                    <p>Our Data Governance Committee meets quarterly to review policies, address data quality issues, ensure compliance with regulations, and adapt our framework to evolving needs. The committee includes representatives from IT, Legal, Operations, and User Experience departments.</p>
-                                    
-                                    <h5 class="mt-4">Training and Awareness</h5>
-                                    <p>All team members receive regular training on data governance policies, privacy regulations, and security best practices. We foster a culture of data responsibility throughout the organization.</p>
+
+                                <!-- Installation Steps -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#installationSteps">
+                                            Installation Steps
+                                        </button>
+                                    </h2>
+                                    <div id="installationSteps" class="accordion-collapse collapse" data-bs-parent="#deploymentAccordion">
+                                        <div class="accordion-body">
+                                            <div class="installation-steps">
+                                                <h5>1. Admin App Installation</h5>
+                                                <ol>
+                                                    <li>Clone the repository:
+                                                        <pre><code>git clone https://github.com/SysEngTeam20/portalt-admin-app.git
+cd admin-app</code></pre>
+                                                    </li>
+                                                    <li>Install dependencies:
+                                                        <pre><code>npm install</code></pre>
+                                                    </li>
+                                                    <li>Set up environment variables:
+                                                        <pre><code>cp .env.example .env.local</code></pre>
+                                                    </li>
+                                                    <li>Configure required services:
+                                                        <ul>
+                                                            <li>Set up Clerk Authentication</li>
+                                                            <li>Configure IBM Cloud Object Storage</li>
+                                                            <li>Set up database (SQLite for development, MongoDB for production)</li>
+                                                        </ul>
+                                                    </li>
+                                                </ol>
+
+                                                <h5 class="mt-4">2. Ubiq-Genie Server Installation</h5>
+                                                <ol>
+                                                    <li>Clone the repository:
+                                                        <pre><code>git clone https://github.com/SysEngTeam20/rag-enabled-ubiq-genie.git
+cd ubiq-genie</code></pre>
+                                                    </li>
+                                                    <li>Set up Python environment:
+                                                        <pre><code>python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt</code></pre>
+                                                    </li>
+                                                    <li>Set up Node.js environment:
+                                                        <pre><code>cd Node
+npm install</code></pre>
+                                                    </li>
+                                                    <li>Configure environment variables:
+                                                        <pre><code>cp .env.template .env.local</code></pre>
+                                                    </li>
+                                                </ol>
+
+                                                <h5 class="mt-4">3. VR Scenes Installation</h5>
+                                                <ol>
+                                                    <li>Clone the repository:
+                                                        <pre><code>git clone https://github.com/SysEngTeam20/unity-vr-scenes.git</code></pre>
+                                                    </li>
+                                                    <li>Install Unity Hub and required Unity version (6000.0.25f1 or later)</li>
+                                                    <li>Open the Unity project in Unity Hub</li>
+                                                    <li>Install required Unity modules:
+                                                        <ul>
+                                                            <li>Android Build Support</li>
+                                                            <li>iOS Build Support</li>
+                                                            <li>Universal Windows Platform Build Support</li>
+                                                        </ul>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Configuration -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#configuration">
+                                            Configuration
+                                        </button>
+                                    </h2>
+                                    <div id="configuration" class="accordion-collapse collapse" data-bs-parent="#deploymentAccordion">
+                                        <div class="accordion-body">
+                                            <div class="configuration">
+                                                <h5>1. Admin App Configuration</h5>
+                                                <p>Create and configure the environment file (.env.local):</p>
+                                                <pre><code># Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+
+# Database Configuration
+SQLITE_DB_PATH=./data/portalt.db  # Development
+MONGODB_URI=your_mongodb_connection_string  # Production
+
+# IBM Cloud Object Storage
+COS_ENDPOINT=your_cos_endpoint
+COS_ACCESS_KEY_ID=your_cos_access_key_id
+COS_SECRET_ACCESS_KEY=your_cos_secret_access_key
+COS_BUCKET_NAME=your_bucket_name
+COS_INSTANCE_CRN=your_instance_crn
+IBM_CLOUD_REGION=your_region
+
+# API Security
+API_SECRET_KEY=your_api_secret_key</code></pre>
+
+                                                <h5 class="mt-4">2. Ubiq-Genie Server Configuration</h5>
+                                                <p>Create and configure the environment file (.env.local):</p>
+                                                <pre><code># API Configuration
+API_BASE_URL=http://localhost:3000
+API_SECRET_KEY=your_jwt_signing_secret
+
+# LLM Configuration
+LLM_SERVER=http://localhost:8080
+LLM_PORT=8080
+
+# Activity Configuration
+ACTIVITY_ID=your_activity_id
+
+# WebSocket Configuration
+WEBSOCKET_SERVER_URL=ws://localhost:5001</code></pre>
+
+                                                <h5 class="mt-4">3. VR Scenes Configuration</h5>
+                                                <ol>
+                                                    <li>Configure build settings in Unity Editor</li>
+                                                    <li>Set up platform-specific settings</li>
+                                                    <li>Configure input settings for VR</li>
+                                                    <li>Set up quality settings for optimal performance</li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Deployment Process -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#deploymentProcess">
+                                            Deployment Process
+                                        </button>
+                                    </h2>
+                                    <div id="deploymentProcess" class="accordion-collapse collapse" data-bs-parent="#deploymentAccordion">
+                                        <div class="accordion-body">
+                                            <div class="deployment-process">
+                                                <h5>1. Docker Deployment</h5>
+                                                <h6>Admin App</h6>
+                                                <ol>
+                                                    <li>Build Docker image:
+                                                        <pre><code>docker build -t portalt-admin:latest .</code></pre>
+                                                    </li>
+                                                    <li>Test container locally:
+                                                        <pre><code>docker run -p 3000:3000 --env-file .env.local portalt-admin:latest</code></pre>
+                                                    </li>
+                                                </ol>
+
+                                                <h6 class="mt-4">Ubiq-Genie Server</h6>
+                                                <ol>
+                                                    <li>Build Docker image:
+                                                        <pre><code>docker build -t ubiq-genie:latest .</code></pre>
+                                                    </li>
+                                                    <li>Test container locally:
+                                                        <pre><code>docker run -p 8000:8000 --env-file .env.local ubiq-genie:latest</code></pre>
+                                                    </li>
+                                                </ol>
+
+                                                <h5 class="mt-4">2. Kubernetes Deployment on IBM Cloud</h5>
+                                                <h6>Admin App Deployment</h6>
+                                                <ol>
+                                                    <li>Create container registry namespace:
+                                                        <pre><code>ibmcloud cr namespace-add portalt</code></pre>
+                                                    </li>
+                                                    <li>Build and tag Docker image:
+                                                        <pre><code>docker build -t portalt-admin:latest .
+docker tag portalt-admin:latest us.icr.io/portalt/portalt-admin:latest</code></pre>
+                                                    </li>
+                                                    <li>Log in to IBM Container Registry:
+                                                        <pre><code>ibmcloud cr login</code></pre>
+                                                    </li>
+                                                    <li>Push image to registry:
+                                                        <pre><code>docker push us.icr.io/portalt/portalt-admin:latest</code></pre>
+                                                    </li>
+                                                    <li>Create secrets:
+                                                        <pre><code>kubectl create secret generic admin-app-secrets \
+  --namespace portalt \
+  --from-literal=clerk-publishable-key=$NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY \
+  --from-literal=clerk-secret-key=$CLERK_SECRET_KEY \
+  --from-literal=cos-endpoint=$COS_ENDPOINT \
+  --from-literal=cos-access-key-id=$COS_ACCESS_KEY_ID \
+  --from-literal=cos-secret-access-key=$COS_SECRET_ACCESS_KEY \
+  --from-literal=cos-bucket-name=$COS_BUCKET_NAME \
+  --from-literal=cos-instance-crn=$COS_INSTANCE_CRN \
+  --from-literal=ibm-cloud-region=$IBM_CLOUD_REGION \
+  --from-literal=api-secret-key=$API_SECRET_KEY</code></pre>
+                                                    </li>
+                                                    <li>Deploy application:
+                                                        <pre><code>kubectl apply -f k8s/admin-app/</code></pre>
+                                                    </li>
+                                                </ol>
+
+                                                <h6 class="mt-4">Ubiq-Genie Server Deployment</h6>
+                                                <ol>
+                                                    <li>Build and tag Docker image:
+                                                        <pre><code>docker build -t ubiq-genie:latest .
+docker tag ubiq-genie:latest us.icr.io/portalt/ubiq-genie:latest</code></pre>
+                                                    </li>
+                                                    <li>Push image to registry:
+                                                        <pre><code>docker push us.icr.io/portalt/ubiq-genie:latest</code></pre>
+                                                    </li>
+                                                    <li>Create secrets:
+                                                        <pre><code>kubectl create secret generic ubiq-genie-secrets \
+  --namespace portalt \
+  --from-literal=api-base-url=$API_BASE_URL \
+  --from-literal=api-secret-key=$API_SECRET_KEY \
+  --from-literal=llm-server=$LLM_SERVER \
+  --from-literal=llm-port=$LLM_PORT \
+  --from-literal=activity-id=$ACTIVITY_ID \
+  --from-literal=websocket-url=$WEBSOCKET_SERVER_URL</code></pre>
+                                                    </li>
+                                                    <li>Deploy application:
+                                                        <pre><code>kubectl apply -f k8s/ubiq-genie/</code></pre>
+                                                    </li>
+                                                </ol>
+
+                                                <h6 class="mt-4">VR Scenes Deployment</h6>
+                                                <ol>
+                                                    <li>Build the application in Unity:
+                                                        <ul>
+                                                            <li>Select target platform (Android/iOS/Windows)</li>
+                                                            <li>Configure build settings</li>
+                                                            <li>Generate build</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>Deploy to target platforms:
+                                                        <ul>
+                                                            <li>Android: Generate APK/Bundle and publish to Google Play Store</li>
+                                                            <li>iOS: Generate Xcode project and publish to App Store</li>
+                                                            <li>Windows: Package and distribute through appropriate channels</li>
+                                                        </ul>
+                                                    </li>
+                                                </ol>
+
+                                                <h5 class="mt-4">3. Post-Deployment Verification</h5>
+                                                <h6>Admin App Verification</h6>
+                                                <ol>
+                                                    <li>Check pod status:
+                                                        <pre><code>kubectl get pods -n portalt -l app=portalt-admin</code></pre>
+                                                    </li>
+                                                    <li>Check logs:
+                                                        <pre><code>kubectl logs -f deployment/portalt-admin -n portalt</code></pre>
+                                                    </li>
+                                                </ol>
+
+                                                <h6 class="mt-4">Ubiq-Genie Server Verification</h6>
+                                                <ol>
+                                                    <li>Check pod status:
+                                                        <pre><code>kubectl get pods -n portalt -l app=ubiq-genie</code></pre>
+                                                    </li>
+                                                    <li>Check logs:
+                                                        <pre><code>kubectl logs -f deployment/ubiq-genie -n portalt</code></pre>
+                                                    </li>
+                                                </ol>
+
+                                                <h6 class="mt-4">VR Scenes Verification</h6>
+                                                <ol>
+                                                    <li>Test builds on target devices</li>
+                                                    <li>Verify VR functionality</li>
+                                                    <li>Check performance metrics</li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Troubleshooting -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#troubleshooting">
+                                            Troubleshooting
+                                        </button>
+                                    </h2>
+                                    <div id="troubleshooting" class="accordion-collapse collapse" data-bs-parent="#deploymentAccordion">
+                                        <div class="accordion-body">
+                                            <div class="troubleshooting">
+                                                <h5>1. Admin App Issues</h5>
+                                                <ul>
+                                                    <li><strong>Database Issues</strong>:
+                                                        <ul>
+                                                            <li>Check database integrity</li>
+                                                            <li>Verify database permissions</li>
+                                                            <li>Check for database locks</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><strong>File Upload Failures</strong>:
+                                                        <ul>
+                                                            <li>Validate file size limits</li>
+                                                            <li>Check storage permissions</li>
+                                                            <li>Verify IBM Cloud Object Storage credentials</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><strong>Electron-specific Issues</strong>:
+                                                        <ul>
+                                                            <li>Check main process logs</li>
+                                                            <li>Verify preload script configuration</li>
+                                                            <li>Check window management</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+
+                                                <h5 class="mt-4">2. Ubiq-Genie Server Issues</h5>
+                                                <ul>
+                                                    <li><strong>RAG Integration Issues</strong>:
+                                                        <ul>
+                                                            <li>Verify token generation</li>
+                                                            <li>Check document access permissions</li>
+                                                            <li>Validate API endpoints</li>
+                                                            <li>Check LLM server connectivity</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><strong>WebSocket Issues</strong>:
+                                                        <ul>
+                                                            <li>Check WebSocket server status</li>
+                                                            <li>Verify connection settings</li>
+                                                            <li>Check network firewall rules</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><strong>LLM Server Issues</strong>:
+                                                        <ul>
+                                                            <li>Verify LLM server is running</li>
+                                                            <li>Check model loading status</li>
+                                                            <li>Monitor resource usage</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+
+                                                <h5 class="mt-4">3. VR Scenes Issues</h5>
+                                                <ul>
+                                                    <li><strong>Build Issues</strong>:
+                                                        <ul>
+                                                            <li>Check Unity build settings</li>
+                                                            <li>Verify platform-specific requirements</li>
+                                                            <li>Check for missing dependencies</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><strong>Performance Issues</strong>:
+                                                        <ul>
+                                                            <li>Check frame rate</li>
+                                                            <li>Monitor memory usage</li>
+                                                            <li>Verify asset optimization</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><strong>VR-specific Issues</strong>:
+                                                        <ul>
+                                                            <li>Check VR input settings</li>
+                                                            <li>Verify headset compatibility</li>
+                                                            <li>Check tracking system</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
